@@ -1,0 +1,40 @@
+date,content_type,title,target_persona,channel,owner,status,publish_date,notes
+2026-04-01,blog post,The Hidden Cost of Knowledge Silos in Enterprise Organizations,Tech Thomas,Website Blog,Marcus Chen,Published,2026-04-01,SEO target keyword: enterprise knowledge management cost
+2026-04-03,social post,Q1 2026 Product Update Highlight — Semantic Search v2.4,All Personas,LinkedIn,Priya Mehta,Published,2026-04-03,Link to product release notes
+2026-04-06,email newsletter,NovaTech Insider — April 2026 Edition,Existing Customers,Email (HubSpot),Rachel Torres,Published,2026-04-06,28% open rate target; include product tip + upcoming webinar promo
+2026-04-07,blog post,RAG vs. Traditional Enterprise Search: What Decision Makers Need to Know,Tech Thomas,Website Blog,Marcus Chen,Published,2026-04-07,High-intent keyword cluster; link to white paper
+2026-04-09,webinar,Scaling Knowledge Management in Financial Services,Strategic Sarah,Zoom Webinar,Rachel Torres,Published,2026-04-09,60 registrants; partnership with ACME Corp speaker
+2026-04-10,social post,Webinar Reminder: Scaling Knowledge Management in Financial Services,Strategic Sarah,LinkedIn,Priya Mehta,Published,2026-04-10,Promotional post for 4/9 webinar replay
+2026-04-14,case study,How GlobalTech Inc Reduced Onboarding Time by 43% with NovaTech,Strategic Sarah,Website / Sales Deck,Marcus Chen,Published,2026-04-14,Customer-approved; quote from CTO James Whitfield
+2026-04-15,social post,New Case Study: GlobalTech Inc Success Story,All Personas,LinkedIn,Priya Mehta,Published,2026-04-15,Link to case study landing page; A/B test two headlines
+2026-04-17,blog post,5 Signs Your Enterprise Search Tool Is Holding You Back,Skeptical Sam,Website Blog,Marcus Chen,Published,2026-04-17,Comparison-intent content; internal link to product pages
+2026-04-21,white paper,The Enterprise Buyer's Guide to AI-Powered Knowledge Management 2026,Skeptical Sam,Gated Asset (HubSpot),Marcus Chen,Published,2026-04-21,12-page gated white paper; used in paid search landing page
+2026-04-22,social post,New White Paper: AI-Powered Knowledge Management Buyer's Guide,Skeptical Sam,LinkedIn,Priya Mehta,Published,2026-04-22,Promote gated white paper download
+2026-04-24,podcast appearance,The Enterprise IT Show — Episode 211: AI Knowledge Management Trends,Tech Thomas,Third-Party Podcast,Rachel Torres,Published,2026-04-24,Lisa Park (VP Product) as guest speaker; host: David Kowalski
+2026-04-28,blog post,How to Build a Business Case for Enterprise Search Modernization,Strategic Sarah,Website Blog,Marcus Chen,Published,2026-04-28,Bottom-of-funnel content; includes ROI calculator CTA
+2026-04-29,email newsletter,Product Tip Tuesday: Getting the Most from Semantic Search,Existing Customers,Email (HubSpot),Rachel Torres,Published,2026-04-29,One-off product tip email; 3-minute read
+2026-05-01,press release,NovaTech Solutions Announces Strategic Partnership with Meridian Enterprises,All Personas,PR Wire / Website,Rachel Torres,Published,2026-05-01,Partnership announcement; cleared by Legal 4/25
+2026-05-05,blog post,Understanding Retrieval-Augmented Generation (RAG) for Enterprise IT Teams,Tech Thomas,Website Blog,Marcus Chen,Scheduled,2026-05-05,Pillar content for RAG keyword cluster; 2500+ words
+2026-05-06,social post,NovaTech x Meridian Enterprises Partnership — What It Means for You,All Personas,LinkedIn,Priya Mehta,Scheduled,2026-05-06,Amplify press release from 5/1
+2026-05-08,video,Customer Spotlight: Pinnacle Systems on Enterprise Knowledge Transformation,Strategic Sarah,YouTube / Website,Priya Mehta,In Production,2026-05-08,3-minute customer testimonial video; filmed 4/18 in Chicago
+2026-05-12,webinar,Live Demo: NovaTech Semantic Search + ServiceNow Integration,Skeptical Sam,Zoom Webinar,Rachel Torres,Scheduled,2026-05-12,Technical audience; co-hosted with ServiceNow partner team
+2026-05-13,email newsletter,NovaTech Insider — May 2026 Edition,Existing Customers,Email (HubSpot),Rachel Torres,Scheduled,2026-05-13,Include Pinnacle Systems video; ServiceNow webinar replay
+2026-05-15,blog post,Data Sovereignty and Enterprise AI: What CIOs Need to Know in 2026,Skeptical Sam,Website Blog,Marcus Chen,In Review,2026-05-15,Compliance/regulatory angle; reviewed by Legal before publish
+2026-05-19,social post,Is Your Enterprise AI Strategy Ready for Global Data Regulations?,Skeptical Sam,LinkedIn,Priya Mehta,Draft,2026-05-19,Tie to 5/15 blog post
+2026-05-20,white paper,Enterprise Search ROI: Measuring the Business Impact of Knowledge Management,Strategic Sarah,Gated Asset (HubSpot),Marcus Chen,In Progress,2026-05-20,Co-authored with Finance for cost data; 10-page report
+2026-05-22,podcast appearance,CIO Leadership Podcast — Ep 88: The AI Knowledge Stack,Skeptical Sam,Third-Party Podcast,Rachel Torres,Confirmed,2026-05-22,Tom Bradley (CISO) as guest; host: Angela Morris
+2026-05-27,blog post,Top 10 Features Enterprise Buyers Should Demand from a Knowledge Platform,All Personas,Website Blog,Marcus Chen,Draft,2026-05-27,SEO: enterprise knowledge platform features; link to competitor comparison page
+2026-05-29,video,Explainer: How NovaTech RAG Technology Works,Tech Thomas,YouTube / Website,Priya Mehta,In Planning,2026-05-29,90-second animated explainer; vendor: BrightMotion Studios
+2026-06-02,blog post,The State of Enterprise AI Adoption — NovaTech 2026 Survey Results,All Personas,Website Blog,Marcus Chen,In Planning,2026-06-02,Based on survey of 500 enterprise buyers; tie-in to Market Research Report
+2026-06-03,social post,Survey Says: 73% of Enterprises Still Struggle with Knowledge Fragmentation,All Personas,LinkedIn,Priya Mehta,Draft,2026-06-03,Lead stat from 2026 market research survey
+2026-06-04,email newsletter,NovaTech Insider — June 2026 Edition,Existing Customers,Email (HubSpot),Rachel Torres,Draft,2026-06-04,Q2 product recap; H2 roadmap preview; customer award announcement
+2026-06-09,webinar,Knowledge Management Best Practices for Healthcare IT,Strategic Sarah,Zoom Webinar,Rachel Torres,Planned,2026-06-09,Healthcare vertical focus; invite SkyBridge Ltd as co-presenter
+2026-06-11,case study,SkyBridge Ltd: Achieving HIPAA-Compliant Knowledge Management at Scale,Skeptical Sam,Website / Sales Deck,Marcus Chen,Planned,2026-06-11,Pending customer approval; draft due 5/30
+2026-06-15,press release,NovaTech Solutions Launches Advanced Multi-Modal Search Capability,All Personas,PR Wire / Website,Rachel Torres,Planned,2026-06-15,Tied to Q2 major product release; coordinate with Product team
+2026-06-16,social post,Introducing Multi-Modal Search: Find Knowledge in Text, Images, and Documents,All Personas,LinkedIn,Priya Mehta,Planned,2026-06-16,Launch day social for new product feature
+2026-06-18,white paper,Multi-Modal Enterprise Search: Technical Architecture and Use Cases,Tech Thomas,Gated Asset (HubSpot),Marcus Chen,Planned,2026-06-18,Technical deep-dive; co-authored with Engineering
+2026-06-22,video,NovaTech at Gartner Data & Analytics Summit 2026 — Highlights,All Personas,YouTube / LinkedIn,Priya Mehta,Planned,2026-06-22,Event recap video from June 9–11 conference attendance
+2026-06-23,blog post,What We Learned at Gartner D&A Summit 2026,Tech Thomas,Website Blog,Marcus Chen,Planned,2026-06-23,Event debrief post; link to multi-modal search launch
+2026-06-25,email newsletter,Special Edition: NovaTech Multi-Modal Search Launch,All Personas,Email (HubSpot),Rachel Torres,Planned,2026-06-25,Announcement email to full list; segment by tier for personalization
+2026-06-29,blog post,H1 2026 in Review: NovaTech Solutions Product and Growth Milestones,All Personas,Website Blog,Marcus Chen,Planned,2026-06-29,End-of-half recap; include ARR milestone if approved by Finance
+2026-06-30,social post,Wrapping Up an Incredible H1 2026 — Thank You to Our Customers and Partners,All Personas,LinkedIn,Priya Mehta,Planned,2026-06-30,Gratitude post; link to H1 recap blog

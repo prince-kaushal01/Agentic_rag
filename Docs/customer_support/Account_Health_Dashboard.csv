@@ -1,0 +1,21 @@
+account_name,tier,arr,csm,health_score,nps,open_tickets,last_qbr_date,renewal_date,days_to_renewal,risk_level,primary_risk_reason,last_login_days_ago,feature_adoption_pct,notes
+ACME Corp,Enterprise,240000,David Rodriguez,Yellow,42,3,2026-03-05,2027-01-14,301,High,Search performance degradation causing VP-level frustration; NPS dropped 16 points in Q1,2,71%,Engineering fix ENG-2847 targeted April 15. Executive retention call needed. Renewal at risk.
+GlobalTech Inc,Enterprise,180000,David Rodriguez,Green,67,0,2026-02-10,2026-12-31,287,Low,None,1,84%,Strong expansion signal: interested in 50 additional seats and AI add-on. Upsell call scheduled April 2026.
+Meridian Enterprises,Enterprise,156000,David Rodriguez,Green,55,1,2026-01-28,2026-11-30,256,Low,None,3,79%,Open ticket is low-priority GDPR SAR. Happy with platform overall. Good expansion candidate.
+Pinnacle Systems,Enterprise,132000,Sasha Ivanova,Yellow,44,2,2026-02-15,2026-10-31,226,Medium,Sub-account analytics bug and NPS decline from 49 to 44,5,68%,Analytics bug ENG-2789 impacting compliance team. Need resolution before QBR in April.
+SkyBridge Ltd,Enterprise,180000,Sasha Ivanova,Red,8,3,2026-02-28,2026-09-30,195,Critical,Active cancellation discussion; mobile app quality and general performance complaints; CEO engaged,12,42%,Oliver Nash (CEO) sent cancellation notice March 15. Retention call March 25. Likely churn or downgrade.
+TerraVision Inc,Professional,72000,Sasha Ivanova,Green,61,0,2026-01-20,2026-08-31,165,Low,None,1,77%,Very happy customer. Referred 2 prospects in Q1 2026.
+CloudSync Systems,Professional,60000,Felipe Morales,Green,72,0,2026-02-05,2026-07-31,135,Low,None,2,88%,Highest feature adoption in Professional tier. Strong NPS. Expansion conversation for Enterprise in Q3.
+Nexus Partners,Professional,48000,Felipe Morales,Green,48,1,2026-01-15,2026-07-15,118,Low,None,4,66%,Minor open ticket (billing). On track for renewal.
+DataBridge Corp,Professional,48000,Sasha Ivanova,Green,38,0,2026-03-01,2026-08-01,135,Low,None,7,61%,Lower NPS but no specific complaints. Engagement declining slightly; schedule proactive check-in.
+Venture Analytics,Professional,42000,Felipe Morales,Green,55,0,2026-02-20,2026-09-15,179,Low,None,3,73%,Strong user for analytics features. Interested in AI Q&A beta.
+Brightfield Logistics,Professional,36000,Felipe Morales,Yellow,32,1,2025-12-10,2026-06-30,103,Medium,Low NPS; no QBR since December 2025,18,49%,Low engagement. Admin hasn't logged in 18 days. Contact for urgent check-in.
+Apex Scientific,Professional,36000,Felipe Morales,Green,51,0,2026-01-08,2026-07-08,111,Low,None,5,69%,Steady user. Interested in HIPAA readiness announcement for Q3 (healthcare adjacent).
+Hartwell Media,Standard,18000,Felipe Morales,Green,44,0,2025-11-15,2026-05-31,73,Low,Minor: upcoming renewal in <90 days,2,58%,Renewal reminder to go out April 1. Good candidate for Professional upgrade pitch.
+Sterling Financial,Standard,18000,Sasha Ivanova,Yellow,29,1,2025-10-20,2026-04-30,42,Medium,Renewal in 42 days; low NPS; no QBR since October 2025,9,51%,Renewal at risk. No QBR in 5 months. Urgently schedule renewal conversation.
+Coastal Energy,Standard,18000,Felipe Morales,Green,47,0,2025-12-01,2026-06-01,74,Low,None,6,62%,Stable. Consider upgrade pitch to Professional.
+MidWest Consulting,Standard,12000,Felipe Morales,Green,41,0,2026-01-10,2026-07-10,113,Low,None,11,53%,Light user. Renewal straightforward.
+Redwood Technology,Standard,12000,Sasha Ivanova,Red,18,2,2025-09-15,2026-03-31,12,Critical,Renewal in 12 days; NPS 18; 2 open tickets; no response to renewal emails,21,34%,URGENT: Renewal expires March 31. No response to 3 renewal emails. Sasha to call today.
+Pacific Imports,Standard,9600,Felipe Morales,Green,38,0,2026-02-01,2026-08-01,135,Low,None,3,55%,Stable SMB customer.
+Nordic Consulting,Standard,8400,Felipe Morales,Yellow,28,1,2025-11-01,2026-05-01,43,Medium,Low NPS; renewal in 43 days,14,43%,Low engagement. Renewal at risk if not engaged soon.
+Summit Advisory,Standard,7200,Felipe Morales,Green,45,0,2026-01-20,2026-07-20,123,Low,None,8,58%,Stable SMB. Renewal expected.

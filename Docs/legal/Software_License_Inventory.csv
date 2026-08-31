@@ -1,0 +1,41 @@
+software_name,license_type,vendor,seats_purchased,seats_used,annual_cost,expiry_date,compliance_status,notes
+AWS,Commercial SaaS,Amazon Web Services,Unlimited,N/A,420000,2026-12-31,Compliant,Enterprise Discount Program (EDP); SOC 2 + ISO 27001 certified
+Snowflake,Commercial SaaS,Snowflake Inc.,Unlimited (credits),N/A,188000,2026-08-15,Compliant,Data cloud; 500 credits/month; renewal negotiation planned
+Salesforce Sales Cloud,Commercial SaaS,Salesforce Inc.,200,185,82000,2026-11-30,Compliant,Enterprise edition; 185 active licenses of 200 purchased
+Salesforce Service Cloud,Commercial SaaS,Salesforce Inc.,50,42,23000,2026-11-30,Compliant,Bundled in same renewal as Sales Cloud
+GitHub Enterprise,Commercial SaaS,GitHub Inc.,150,127,28800,2027-01-31,Compliant,Developer seats; Actions minutes included
+Slack Business+,Commercial SaaS,Slack Technologies,400,351,38400,2026-09-30,Compliant,351 active users of 400 seats; Slack Connect enabled
+Zoom Business+,Commercial SaaS,Zoom Video,400,348,21600,2026-12-31,Compliant,Zoom Phone add-on for 45 users
+Okta,Commercial SaaS,Okta Inc.,500,389,43200,2026-10-31,Compliant,SSO + MFA; customer-facing SSO feature included
+Datadog Enterprise,Commercial SaaS,Datadog Inc.,N/A,50 hosts,81600,2026-12-31,Compliant,APM + Logs + Synthetics; 50 infrastructure hosts
+PagerDuty AIOps,Commercial SaaS,PagerDuty Inc.,85,78,13200,2026-07-31,Compliant,25 full users + 60 stakeholders; AIOps package
+Jira Software,Commercial SaaS,Atlassian,200,183,24000,2027-02-28,Compliant,Software plan; 183 active users
+Confluence,Commercial SaaS,Atlassian,200,165,9600,2027-02-28,Compliant,Bundled with Jira; company wiki
+Zendesk Suite Enterprise,Commercial SaaS,Zendesk Inc.,50,44,49200,2026-12-31,Compliant,Support + Guide + Chat; 44 agent seats active
+Figma Professional,Commercial SaaS,Figma Inc.,60,52,19800,2026-08-31,Compliant,12 editors + 40 viewer seats; design system
+Greenhouse ATS,Commercial SaaS,Greenhouse Software,Unlimited,N/A,25200,2026-06-30,Compliant,Applicant tracking + CRM add-on for talent pipeline
+Gong,Commercial SaaS,Gong.io Inc.,50,47,54000,2026-11-30,Compliant,Revenue intelligence for sales + CS teams
+Outreach,Commercial SaaS,Outreach Inc.,40,38,45600,2027-01-31,Compliant,Sales engagement sequences and calling
+ZoomInfo SalesOS,Commercial SaaS,ZoomInfo Technologies,25,22,62400,2026-10-31,Compliant,SDR prospecting tool; 25 seats
+Carta,Commercial SaaS,Carta Inc.,Unlimited,N/A,15000,2027-03-31,Compliant,Cap table + 409A; ~320 option holders tracked
+Stripe,Commercial SaaS,Stripe Inc.,Unlimited,N/A,50400,2027-01-31,Compliant,2.9%+$0.30/transaction; Radar fraud tool
+Workday HCM,Commercial SaaS,Workday Inc.,400,319,42000,2027-06-30,Compliant,HRIS + Payroll; all US employees
+Lattice,Commercial SaaS,Lattice Inc.,350,308,21600,2026-11-30,Compliant,Goals + Reviews + Engagement; 308 employees active
+LaunchDarkly,Commercial SaaS,LaunchDarkly Inc.,Unlimited,N/A,26400,2026-08-31,Compliant,Feature flag management; 3 product tiers
+Sentry,Commercial SaaS,Functional Software,Unlimited,N/A,10800,2026-11-30,Compliant,Error tracking; 5 projects; Team plan
+1Password Business,Commercial SaaS,AgileBits Inc.,400,367,5040,2026-08-31,Compliant,Password management; 367 active users
+DocuSign Business Pro,Commercial SaaS,DocuSign Inc.,15,12,14400,2026-12-31,Compliant,eSignature for contracts; 10 sender licenses
+Loom Business,Commercial SaaS,Loom Inc.,150,128,7800,2026-09-30,Compliant,Async video messaging; CS and product teams
+Linear,Commercial SaaS,Linear Inc.,100,87,9600,2026-07-31,Compliant,Engineering issue tracker; 87 users
+Notion Team,Commercial SaaS,Notion Labs,300,268,16800,2026-09-30,Compliant,Company wiki and project documentation
+React,Open Source (MIT),Meta (Facebook),N/A,N/A,0,N/A,Compliant,Frontend UI library; MIT licensed; attribution in NOTICES.txt
+Next.js,Open Source (MIT),Vercel,N/A,N/A,0,N/A,Compliant,React framework; MIT licensed; attribution in NOTICES.txt
+Node.js,Open Source (MIT),OpenJS Foundation,N/A,N/A,0,N/A,Compliant,Server-side JavaScript runtime; MIT licensed
+PostgreSQL,Open Source (PostgreSQL License),PostgreSQL Global Dev Group,N/A,N/A,0,N/A,Compliant,Database; PostgreSQL License (similar to BSD/MIT)
+Redis,Open Source (BSD 3-Clause),Redis Ltd.,N/A,N/A,0,N/A,Compliant,In-memory cache; BSD 3-Clause; review SSPL concerns for Redis 7.4+
+Apache Kafka,Open Source (Apache 2.0),Apache Software Foundation,N/A,N/A,0,N/A,Compliant,Message streaming; Apache 2.0 licensed
+Kubernetes,Open Source (Apache 2.0),CNCF,N/A,N/A,0,N/A,Compliant,Container orchestration; Apache 2.0
+TensorFlow,Open Source (Apache 2.0),Google,N/A,N/A,0,N/A,Compliant,ML framework for AI recommendations module; Apache 2.0
+Lodash,Open Source (MIT),JS Foundation,N/A,N/A,0,N/A,Compliant,JavaScript utility library; MIT licensed
+Express.js,Open Source (MIT),OpenJS Foundation,N/A,N/A,0,N/A,Compliant,Web framework; MIT licensed
+Jest,Open Source (MIT),Meta (Facebook),N/A,N/A,0,N/A,Compliant,Testing framework; MIT licensed; dev dependency only

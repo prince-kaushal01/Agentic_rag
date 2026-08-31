@@ -1,0 +1,31 @@
+employee_id,first_name,last_name,email,department,title,level,manager_id,hire_date,location,employment_type
+EMP001,Marcus,Harrington,m.harrington@novatechsolutions.com,Executive,Chief Executive Officer,M4,,2018-03-01,San Francisco CA,Full-Time
+EMP002,Priya,Venkatesan,p.venkatesan@novatechsolutions.com,Engineering,Chief Technology Officer,M4,EMP001,2018-03-01,San Francisco CA,Full-Time
+EMP003,Carlos,Jimenez,c.jimenez@novatechsolutions.com,Finance,Chief Financial Officer,M4,EMP001,2019-06-15,San Francisco CA,Full-Time
+EMP004,Sarah,Delacroix,s.delacroix@novatechsolutions.com,People Operations,VP People Operations,M4,EMP001,2019-09-01,San Francisco CA,Full-Time
+EMP005,Daniel,Okafor,d.okafor@novatechsolutions.com,Sales,VP of Sales,M4,EMP001,2020-01-15,New York NY,Full-Time
+EMP006,Lindsey,Huang,l.huang@novatechsolutions.com,Marketing,VP of Marketing,M4,EMP001,2020-07-06,San Francisco CA,Full-Time
+EMP007,James,Calloway,j.calloway@novatechsolutions.com,Engineering,Director of Engineering,M3,EMP002,2019-11-04,San Francisco CA,Full-Time
+EMP008,Amara,Nwosu,a.nwosu@novatechsolutions.com,Engineering,Engineering Manager,M1,EMP007,2020-08-17,Remote US,Full-Time
+EMP009,Tyler,Brandt,t.brandt@novatechsolutions.com,Engineering,Senior Software Engineer,IC4,EMP008,2021-03-22,Remote US,Full-Time
+EMP010,Sonia,Krishnamurthy,s.krishnamurthy@novatechsolutions.com,Engineering,Staff Software Engineer,IC5,EMP007,2021-01-11,San Francisco CA,Full-Time
+EMP011,Rafael,Montoya,r.montoya@novatechsolutions.com,Engineering,Software Engineer II,IC3,EMP008,2022-05-09,Austin TX,Full-Time
+EMP012,Nina,Patel,n.patel@novatechsolutions.com,Engineering,Software Engineer I,IC2,EMP008,2023-08-14,Remote US,Full-Time
+EMP013,Kevin,Tran,k.tran@novatechsolutions.com,Engineering,Principal Software Engineer,IC6,EMP002,2020-04-20,San Francisco CA,Full-Time
+EMP014,Megan,Fitzgerald,m.fitzgerald@novatechsolutions.com,Sales,Sales Manager,M1,EMP005,2021-02-01,New York NY,Full-Time
+EMP015,Jordan,Whitfield,j.whitfield@novatechsolutions.com,Sales,Enterprise Account Executive,IC5,EMP014,2021-07-19,New York NY,Full-Time
+EMP016,Aisha,Coleman,a.coleman@novatechsolutions.com,Sales,Senior Account Executive,IC4,EMP014,2022-03-07,Remote US,Full-Time
+EMP017,Ben,Lawson,b.lawson@novatechsolutions.com,Sales,Account Executive Mid-Market,IC3,EMP014,2023-01-16,Austin TX,Full-Time
+EMP018,Chloé,Dupont,c.dupont@novatechsolutions.com,Sales,Sales Development Rep,IC1,EMP014,2024-06-03,Remote US,Full-Time
+EMP019,Samuel,Osei,s.osei@novatechsolutions.com,Customer Success,Director of Customer Success,M3,EMP005,2020-10-12,San Francisco CA,Full-Time
+EMP020,Grace,Nakamura,g.nakamura@novatechsolutions.com,Customer Success,Senior Customer Success Manager,IC4,EMP019,2021-09-27,San Francisco CA,Full-Time
+EMP021,Drew,Washington,d.washington@novatechsolutions.com,Customer Success,Customer Success Manager,IC3,EMP019,2022-11-14,Remote US,Full-Time
+EMP022,Rebecca,Lin,r.lin@novatechsolutions.com,People Operations,Director of People Programs,M3,EMP004,2021-05-03,San Francisco CA,Full-Time
+EMP023,Jordan,Kauffman,j.kauffman@novatechsolutions.com,People Operations,Head of Talent Acquisition,IC6,EMP004,2021-08-30,Remote US,Full-Time
+EMP024,Tamara,Oyelaran,t.oyelaran@novatechsolutions.com,People Operations,Total Rewards Manager,IC4,EMP004,2022-02-07,Remote US,Full-Time
+EMP025,Marcus,Webb,m.webb@novatechsolutions.com,Marketing,Senior Marketing Manager,IC5,EMP006,2021-06-14,San Francisco CA,Full-Time
+EMP026,Isabelle,Fontaine,i.fontaine@novatechsolutions.com,Marketing,Demand Generation Manager,IC4,EMP006,2022-09-19,New York NY,Full-Time
+EMP027,Derek,Santos,d.santos@novatechsolutions.com,Finance,Senior Financial Analyst,IC4,EMP003,2022-01-10,San Francisco CA,Full-Time
+EMP028,Preethi,Ramachandran,p.ramachandran@novatechsolutions.com,Operations,Revenue Operations Manager,IC4,EMP003,2022-04-25,Remote US,Full-Time
+EMP029,Oliver,Chen,o.chen@novatechsolutions.com,Engineering,Associate Software Engineer,IC1,EMP008,2025-01-06,Remote US,Full-Time
+EMP030,Fatima,Al-Rashid,f.alrashid@novatechsolutions.com,Sales,Business Development Rep,IC2,EMP014,2024-09-09,Remote US,Full-Time

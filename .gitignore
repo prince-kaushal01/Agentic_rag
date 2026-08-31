@@ -1,0 +1,230 @@
+# ==============================================================
+# Enterprise Agentic Knowledge Assistant — .gitignore
+# ==============================================================
+
+
+# ── Secrets & Environment ──────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.p12
+secrets/
+credentials/
+
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+MANIFEST
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.whl
+
+
+# ── Virtual Environments ──────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+venv.bak/
+.virtualenv/
+
+
+# ── Testing & Coverage ────────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+coverage/
+htmlcov/
+*.cover
+nosetests.xml
+test-results/
+test-reports/
+junit.xml
+.tox/
+.nox/
+
+
+# ── Type Checking ─────────────────────────────────────────────
+.mypy_cache/
+.pytype/
+.pyre/
+.dmypy.json
+dmypy.json
+
+
+# ── Linting & Formatting ──────────────────────────────────────
+.ruff_cache/
+
+
+# ── Jupyter Notebooks ─────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+
+# ── Logs ──────────────────────────────────────────────────────
+*.log
+logs/
+log/
+*.log.*
+pip-log.txt
+pip-delete-this-directory.txt
+
+
+# ── Database ──────────────────────────────────────────────────
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+pgdata/
+postgres_data/
+redis_data/
+
+
+# ── Vector Store / ML Artifacts ───────────────────────────────
+*.faiss
+*.index
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.pt
+*.pth
+*.bin
+*.safetensors
+model_cache/
+.cache/
+huggingface_cache/
+sentence_transformers_cache/
+embeddings_cache/
+
+
+# ── Document Upload Storage ───────────────────────────────────
+uploads/
+storage/
+media/
+tmp/
+temp/
+
+
+# ── Docker ────────────────────────────────────────────────────
+docker-compose.override.yml
+.docker/
+
+
+# ── Node / Frontend ───────────────────────────────────────────
+node_modules/
+.npm/
+.yarn/
+.pnp.*
+.next/
+out/
+.nuxt/
+frontend/dist/
+frontend/.next/
+*.tsbuildinfo
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+# ── IDEs & Editors ────────────────────────────────────────────
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+
+# JetBrains (PyCharm, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+\#*\#
+.#*
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+
+# ── OS Generated ──────────────────────────────────────────────
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+.directory
+.Trash-*
+
+
+# ── Observability & Tracing ───────────────────────────────────
+.langfuse/
+langfuse_data/
+otel_data/
+traces/
+
+
+# ── Claude Code ───────────────────────────────────────────────
+.claude/
+
+
+# ── Misc ──────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.temp
+.hypothesis/
+.benchmarks/
+profile_output/
+*.prof
