@@ -1,16 +1,16 @@
 # Project Dashboard — Enterprise Agentic Knowledge Assistant
 
-> Last updated: 2026-08-30 | Branch: `main` | Commit: `1024cd9`
+> Last updated: 2026-08-31 | Branch: `main` | Commit: `1024cd9`
 
 ---
 
 ## Overall Progress
 
 ```
-████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  8%
+████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  18%
 ```
 
-**3 / 38 tasks complete** across 12 phases
+**8 / 44 tasks complete** across 12 phases
 
 ---
 
@@ -18,7 +18,7 @@
 
 | # | Phase | Status | Progress | Tasks Done | Tasks Total | Started | Completed |
 |---|-------|--------|----------|-----------|-------------|---------|-----------|
-| 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 3 | 3 | 2026-08-30 | 2026-08-30 |
+| 1 | Foundation & Project Setup | 🔄 In Progress | `█████████░░░` 78% | 7 | 9 | 2026-08-30 | — |
 | 2 | Document Ingestion Pipeline | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
 | 3 | Basic RAG | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
 | 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
@@ -39,22 +39,25 @@
 
 ---
 
-### Phase 1 — Foundation & Project Setup ✅ 100%
+### Phase 1 — Foundation & Project Setup 🔄 78%
 
-> *Goal: repo structure, Docker environment, database schema, CI pipeline.*
+> *Goal: repo structure, environment, dependencies, seed data, CI pipeline.*
 
 ```
-████████████  100%
+█████████░░░  78%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Initialize repository with full directory structure | ✅ | `1024cd9` |
-| Create README.md and DASHBOARD.md | ✅ | `1024cd9` |
+| Initialize repository with full directory structure | ✅ | `1024cd9` — 2026-08-30 |
+| Create README.md and DASHBOARD.md | ✅ | 2026-08-30 — professional project docs |
+| `.env` + `.env.example` + secrets management | ✅ | 2026-08-30 — `.env` gitignored |
+| `requirements.txt` — all 40+ packages defined | ✅ | 2026-08-31 — version conflicts resolved |
+| Python virtual environment setup + all packages installed | ✅ | 2026-08-31 — Python 3.11.8, venv verified |
+| `.gitignore` — comprehensive (venv, secrets, ML artifacts, OS files) | ✅ | 2026-08-31 |
+| 89 synthetic seed documents across 8 departments | ✅ | 2026-08-31 — HR, Sales, Finance, Legal, Engineering, Support, Marketing, Ops |
 | Docker Compose (Postgres + pgvector + Redis) | ⬜ | |
-| `.env.example` + secrets management | ⬜ | |
-| Database schema + SQLAlchemy models | ⬜ | |
-| GitHub Actions CI skeleton | ⬜ | |
+| GitHub Actions CI skeleton (lint, test, build) | ⬜ | |
 
 ---
 
@@ -367,8 +370,11 @@ backend/tools/email.py
 
 | Date | Commit | Phase | What Changed | Tasks Completed | Total % |
 |------|--------|-------|-------------|----------------|---------|
-| 2026-08-30 | `1024cd9` | 1 | Initial commit — repo created | 1/38 | 3% |
-| 2026-08-30 | *(current)* | 1 | README.md + DASHBOARD.md | 3/38 | 8% |
+| 2026-08-30 | `1024cd9` | 1 | Initial commit — repo created | 1/44 | 2% |
+| 2026-08-30 | — | 1 | README.md + DASHBOARD.md generated | 3/44 | 7% |
+| 2026-08-31 | — | 1 | `.env.example`, `.gitignore`, `requirements.txt` | 6/44 | 14% |
+| 2026-08-31 | — | 1 | Python venv set up, all 40+ packages installed | 7/44 | 16% |
+| 2026-08-31 | — | 1 | 89 synthetic seed docs generated (8 departments) | 8/44 | 18% |
 
 ---
 
@@ -377,18 +383,20 @@ backend/tools/email.py
 ```
 Progress over commits
 
-10% │  *
+20% │                                  *
     │
- 8% │        *
+18% │                           *
     │
- 6% │
+16% │                    *
     │
- 4% │
+14% │             *
     │
- 2% │
+ 7% │      *
+    │
+ 2% │  *
     │
  0% └──────────────────────────────────────────────────
-     1024cd9   (next)   (next)   (next)   (next)   ...
+     init   README  .gitignore  venv   docs/  (next) ...
 ```
 
 *Update after each commit by adding a `*` at the correct height.*
@@ -411,6 +419,10 @@ Progress over commits
 | 2026-08-30 | LangGraph for agent orchestration | Explicit state graph; easier to debug than implicit chains |
 | 2026-08-30 | Modular monolith (not microservices) | Appropriate for 2-week build; clean module boundaries still present |
 | 2026-08-30 | Simulated CRM/email (not live integrations) | Demonstrates multi-system orchestration without credential complexity |
+| 2026-08-31 | `anthropic>=0.41.0`, `openai>=1.58.1,<2.0.0` flexible bounds | LangChain ecosystem has tight interdependencies; strict pins caused resolution failures |
+| 2026-08-31 | `tenacity>=8.4.1,<9.0.0` range bound | deepeval requires ~=8.4; langchain allows <10; range satisfies both |
+| 2026-08-31 | `opentelemetry-api==1.24.0` pinned to 1.24.x | deepeval 1.5.2 requires ~=1.24.0; keeps eval stack compatible |
+| 2026-08-31 | docs/ kept in repo for now | Seed data makes project self-contained and demo-ready; will gitignore after ingestion pipeline + seed script built |
 
 ---
 

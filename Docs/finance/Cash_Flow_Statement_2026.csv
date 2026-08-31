@@ -1,0 +1,8 @@
+month,cash_beginning,operating_inflows,operating_outflows,investing_activities,financing_activities,net_change,cash_ending,new_arr_cash_collected,expansion_cash,churn_credits,notes
+January 2026,15400000,2180000,-3230000,-45000,12000,-1083000,14317000,820000,85000,-18000,"Large enterprise renewals: ACME Corp ($240K) and GlobalTech ($185K) billed and collected"
+February 2026,14317000,1450000,-2580000,-28000,8000,-1150000,13167000,120000,42000,-10000,"Typical month; Meridian Enterprises expansion collected; lighter enterprise collections"
+March 2026,13167000,1920000,-2880000,-55000,12000,-1003000,12164000,200000,38000,0,"Pinnacle Systems annual renewal ($180K) collected; Q1 payroll run higher due to bonus payouts"
+April 2026,12164000,1680000,-2750000,-38000,0,-1108000,11056000,155000,55000,-8500,"Three new SMB logos closed; GlobalTech expansion for AI Analytics module"
+May 2026,11056000,1540000,-2610000,-22000,5000,-1087000,9969000,80000,28000,-19000,"SkyBridge Ltd renewal under negotiation; collections slightly below plan"
+June 2026,9969000,2350000,-3100000,-65000,15000,-800000,9169000,480000,95000,0,"Strong June close: two enterprise deals closed; SkyBridge Ltd renewed at $195K; fundraising legal costs in outflows"
+Total H1 2026,15400000,11120000,-17150000,-253000,52000,-6231000,9169000,1855000,343000,-37500,"H1 net burn $1.038M/month avg; Series B fundraise expected to close Q3 2026"

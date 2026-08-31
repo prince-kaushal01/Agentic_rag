@@ -1,0 +1,54 @@
+category,subcategory,q1_budget,q1_actual,q2_budget,q2_forecast,q3_budget,q4_budget,annual_total,owner
+Demand Generation,Paid Search (Google Ads),110000,104200,120000,115000,125000,130000,485000,Marcus Chen
+Demand Generation,Paid Search (Bing Ads),18000,16800,20000,18500,20000,22000,80000,Marcus Chen
+Demand Generation,Paid Social (LinkedIn Sponsored),78000,74400,85000,80000,90000,95000,348000,Marcus Chen
+Demand Generation,Programmatic Display (Demandbase),42000,38200,45000,42000,50000,55000,192000,Marcus Chen
+Demand Generation,Retargeting (Google/LinkedIn),14000,12800,15000,14000,16000,18000,63000,Marcus Chen
+Demand Generation,ABM Platform (Demandbase Annual),12000,12000,0,0,0,0,12000,Marcus Chen
+Demand Generation,Bombora Intent Data,8000,8000,8000,8000,8000,8000,32000,Marcus Chen
+Demand Generation,Total Demand Generation,282000,266400,293000,277500,309000,328000,1212000,Marcus Chen
+Content,Content Writers (Agency — Clearwater Digital),52000,49800,55000,52000,58000,60000,225000,Marcus Chen
+Content,Content Writers (Freelance),18000,17200,20000,18000,22000,24000,84000,Marcus Chen
+Content,Design (Canva Pro + Designer Hours),14000,13600,15000,14000,16000,17000,62000,Priya Mehta
+Content,Video Production (BrightMotion Studios),28000,24000,30000,28000,35000,40000,133000,Priya Mehta
+Content,Photography (Campaigns + Events),8000,7400,10000,9000,12000,8000,38000,Priya Mehta
+Content,Translation Services (EMEA — H2),0,0,0,0,18000,22000,40000,Marcus Chen
+Content,SEO Agency Retainer (Clearwater Digital),12000,12000,12000,12000,12000,12000,48000,Marcus Chen
+Content,Total Content,132000,124000,142000,133000,173000,183000,630000,Marcus Chen
+Events,Trade Shows — Enterprise Connect 2026,42000,41200,0,0,0,0,42000,Rachel Torres
+Events,Trade Shows — HIMSS Global Health 2026,61000,58400,0,0,0,0,61000,Rachel Torres
+Events,Trade Shows — ServiceNow Knowledge 2026,0,0,55000,53000,0,0,55000,Rachel Torres
+Events,Trade Shows — Gartner D&A Summit 2026,0,0,140000,138000,0,0,140000,Rachel Torres
+Events,Trade Shows — Gartner IT Symposium 2026,0,0,0,0,0,68000,68000,Rachel Torres
+Events,Trade Shows — AWS re:Invent 2026,0,0,0,0,0,180000,180000,Rachel Torres
+Events,Hosted Events — NovaTech Knowledge Summit,187000,184600,0,0,0,0,187000,Rachel Torres
+Events,Hosted Events — EMEA User Conference,0,0,0,0,95000,0,95000,Rachel Torres
+Events,Hosted Events — CAB Meeting (May),0,0,22000,20000,0,22000,44000,Rachel Torres
+Events,Sponsored Events — Startup/Partner Events,12000,10800,15000,12000,18000,20000,65000,Rachel Torres
+Events,Total Events,302000,295000,232000,223000,113000,290000,937000,Rachel Torres
+Brand,PR Agency (Vantage PR — Monthly Retainer),36000,36000,36000,36000,36000,36000,144000,Rachel Torres
+Brand,PR Agency (Project — Product Launch Coverage),0,0,18000,18000,0,0,18000,Rachel Torres
+Brand,Analyst Relations (Gartner Briefings + Forrester),24000,22800,24000,22000,24000,24000,96000,Rachel Torres
+Brand,Analyst Relations (IDC Sponsorship),0,0,0,0,16000,0,16000,Rachel Torres
+Brand,Brand Campaign (Digital — H2),0,0,0,0,42000,48000,90000,Priya Mehta
+Brand,G2 Review Management (G2 Marketing Solutions),12000,12000,12000,12000,12000,12000,48000,Rachel Torres
+Brand,Branded Merchandise + Swag,8000,6400,10000,8000,12000,15000,45000,Priya Mehta
+Brand,Executive Thought Leadership (Writing Support),8000,7200,8000,7500,8000,8000,32000,Rachel Torres
+Brand,Total Brand,88000,84400,108000,103500,150000,143000,489000,Rachel Torres
+Tools,HubSpot Marketing Hub (Annual — Quarterly Billing),22000,22000,22000,22000,22000,22000,88000,Marcus Chen
+Tools,Salesforce CRM (Marketing Seats),8000,8000,8000,8000,8000,8000,32000,Marcus Chen
+Tools,Drift (Conversational Marketing),6000,6000,6000,6000,6000,6000,24000,Marcus Chen
+Tools,Demandbase ABM Platform (Annual),18000,18000,18000,18000,18000,18000,72000,Marcus Chen
+Tools,Semrush SEO Platform,2400,2400,2400,2400,2400,2400,9600,Marcus Chen
+Tools,Loom + Video Hosting (Wistia),3000,2800,3000,3000,3000,3000,12000,Priya Mehta
+Tools,Canva Teams,1200,1200,1200,1200,1200,1200,4800,Priya Mehta
+Tools,Clearbit (Data Enrichment),4800,4800,4800,4800,4800,4800,19200,Marcus Chen
+Tools,Total MarTech Stack,65400,65200,65400,65400,65400,65400,261600,Marcus Chen
+Headcount,VP of Marketing (Rachel Torres — Loaded),55000,55000,55000,55000,55000,55000,220000,David Huang
+Headcount,Director Demand Gen (Marcus Chen — Loaded),42000,42000,42000,42000,42000,42000,168000,Rachel Torres
+Headcount,Director Brand & Design (Priya Mehta — Loaded),38000,38000,38000,38000,38000,38000,152000,Rachel Torres
+Headcount,Marketing Manager (Rachel Torres direct — Loaded),0,0,32000,32000,32000,32000,96000,Rachel Torres
+Headcount,Content Marketing Manager (Hired April 2026),0,0,34000,34000,34000,34000,102000,Rachel Torres
+Headcount,SDR Support (allocated to Marketing — 1 FTE),28000,28000,28000,28000,28000,28000,112000,Rachel Torres
+Headcount,Total Headcount (Loaded),163000,163000,229000,229000,229000,229000,850000,Rachel Torres
+TOTAL,All Categories,1032400,998000,1069400,1031400,1039400,1238400,4379600,Rachel Torres

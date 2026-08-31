@@ -1,0 +1,38 @@
+kpi_name,category,owner,target,jan_2026,feb_2026,mar_2026,q1_2026,trend,status,notes
+Annual Recurring Revenue (ARR),Revenue,Carlos Ramirez,$42M by Dec 2026,$28.4M,$29.1M,$29.8M,$29.8M,Up,On Track,Q1 net new ARR $1.4M vs $1.5M target
+Monthly Recurring Revenue (MRR),Revenue,Carlos Ramirez,$3.5M by Dec 2026,$2.37M,$2.43M,$2.48M,$2.48M,Up,On Track,Consistent growth; seasonal slowdown expected in Feb
+Net Revenue Retention (NRR),Revenue,Janet Okonkwo,118%,114%,115%,116%,116%,Up,On Track,Driven by expansion in Meridian Enterprises and ACME Corp
+Gross Revenue Churn Rate (Monthly),Revenue,Janet Okonkwo,<0.5%,0.38%,0.41%,0.35%,0.38%,Stable,On Track,One customer churn in Feb (startup - budget cut)
+Logo Churn Rate (Quarterly),Revenue,Janet Okonkwo,<2%,—,—,1.1%,1.1%,—,On Track,1 logo churned Q1 (FlexStart Inc - $18K ACV)
+Average Contract Value (ACV) - New,Revenue,Sophia Lee,$75000,$68200,$74100,$82400,$74900,Up,On Track,March spike due to Pinnacle Systems expansion deal
+Gross Margin,Revenue,Carlos Ramirez,>72%,71.4%,71.8%,72.1%,71.8%,Up,Watch,Slightly below target in Jan; improving trend
+Cash Burn Rate (Monthly),Revenue,Carlos Ramirez,<$800K/mo,$742K,$768K,$724K,$745K,Stable,On Track,Well within board-approved burn envelope
+Runway (Months at current burn),Revenue,Carlos Ramirez,>24 months,31,30,31,31,Stable,On Track,Cash position $23.1M as of March 31
+Daily Active Users (DAU),Product,Lisa Park,4500 by Q4 2026,2841,2974,3188,avg 3001,Up,On Track,Strong engagement growth; launched activity nudges in March
+Weekly Active Users (WAU),Product,Lisa Park,8000 by Q4 2026,5240,5612,6108,avg 5653,Up,On Track,
+Monthly Active Users (MAU),Product,Lisa Park,12000 by Q4 2026,7820,8340,9012,avg 8391,Up,On Track,
+Feature Adoption - Semantic Search,Product,Lisa Park,>80% of MAU,74%,77%,79%,79%,Up,Watch,Close to target; new tutorial helping
+Feature Adoption - Slack Integration,Product,Lisa Park,>60% of eligible,51%,54%,58%,58%,Up,Watch,Requires admin setup - CS enablement needed
+Platform Uptime (Monthly),Product,Marcus Webb,99.9%,99.94%,99.91%,99.96%,99.94%,Stable,On Track,Two minor incidents in Feb; both resolved <2hrs
+API Response Time P95 (ms),Product,Marcus Webb,<200ms,188ms,192ms,184ms,188ms,Stable,On Track,
+Search Latency P99 (ms),Product,Marcus Webb,<500ms,412ms,428ms,398ms,413ms,Stable,On Track,Improvement after index optimization in late March
+New Connectors Installed per Month,Product,Lisa Park,300/month,218,241,287,avg 249,Up,Watch,Connector installation growth key to retention
+Pipeline Generated (Marketing-Sourced),Sales & Marketing,Rachel Torres,$3.2M Q1 target,$880K,$1.12M,$1.20M,$3.20M,Up,Achieved,Achieved Q1 target exactly
+Marketing Qualified Leads (MQLs),Sales & Marketing,Rachel Torres,800 Q1,248,287,312,847,Up,Achieved,Exceeded Q1 target by 5.9%
+Sales Qualified Leads (SQLs),Sales & Marketing,Sophia Lee,144 Q1,42,52,58,152,Up,Achieved,18% MQL-to-SQL conversion vs 16% target
+Win Rate (from SQL),Sales & Marketing,Sophia Lee,>18%,15%,17%,20%,17.4%,Up,Watch,Improving trend; March was strong
+Sales Cycle Length (avg days),Sales & Marketing,Sophia Lee,<90 days,98,94,88,93,Down,Watch,Improving; enterprise deals driving longer cycles
+Customer Acquisition Cost (CAC),Sales & Marketing,Carlos Ramirez,<$9000,$9842,$9214,$8688,$9248,Down,Watch,Trending toward target; paid search efficiency improving
+Customer Support CSAT Score,Customer Success,Raj Patel,>4.5/5.0,4.41,4.48,4.52,4.47,Up,Watch,Jan slightly below target; March recovered
+Support Ticket SLA Attainment (P1),Customer Success,Raj Patel,>99%,98.8%,99.2%,99.6%,99.2%,Stable,On Track,
+Support Ticket SLA Attainment (P2),Customer Success,Raj Patel,>95%,93.4%,94.8%,96.2%,94.8%,Up,Watch,Improving; added 2 support agents in Feb
+Avg Ticket Resolution Time (hours),Customer Success,Raj Patel,<8 hours,9.2,8.6,7.8,8.5,Down,Watch,Trending down toward target
+Customer NPS (Quarterly),Customer Success,Janet Okonkwo,>50,—,—,52,52,—,On Track,Q1 NPS survey completed March; 87 respondents
+Deployment Frequency (per week),Engineering,Marcus Webb,>10/week,8.4,9.2,11.6,avg 9.7,Up,Watch,March exceeded target following CI/CD improvements
+Mean Time to Recovery - MTTR (hours),Engineering,Marcus Webb,<2 hours,1.8,2.4,1.6,avg 1.9,Stable,On Track,Feb spike due to one prolonged incident (search index)
+Test Coverage (% of codebase),Engineering,Jennifer Yao,>80%,76%,77%,79%,79%,Up,Watch,Approaching target; focus on legacy code coverage gaps
+Open Critical Bugs,Engineering,Jennifer Yao,0 at any time,1,0,0,avg 0.3,Down,On Track,Jan had 1 P0 bug (resolved within 4 hours)
+Total Headcount,HR,Jennifer Walsh,420 by Dec 2026,387,389,393,393,Up,On Track,6 new hires in Q1; 8 open requisitions
+Employee NPS (eNPS),HR,Jennifer Walsh,>40,—,—,44,44,—,On Track,Q1 eNPS survey sent March 20; 71% response rate
+Voluntary Attrition Rate (Trailing 12M),HR,Jennifer Walsh,<12%,11.2%,11.4%,11.1%,11.1%,Stable,On Track,Low attrition; 2 voluntary departures in Q1
+Time to Fill Open Roles (avg days),HR,Jennifer Walsh,<45 days,52,48,44,48,Down,Watch,Improving; new JD templates reducing time to screen

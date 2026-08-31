@@ -1,0 +1,51 @@
+asset_id,type,make,model,serial_number,assigned_to,department,purchase_date,purchase_price,warranty_expiry,condition,location,notes
+NT-001,Laptop,Apple,MacBook Pro 16" M3 Pro,C02ZK1234ABC,Marcus Webb,Engineering,2024-01-15,3499.00,2027-01-15,Good,SF HQ - Desk E14,CTO primary device
+NT-002,Laptop,Apple,MacBook Pro 14" M3,C02ZK2345BCD,Jennifer Yao,Engineering,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk E08,VP Engineering
+NT-003,Laptop,Apple,MacBook Pro 14" M3,C02ZK3456CDE,James Kim,Engineering,2024-02-01,2499.00,2027-02-01,Good,SF HQ - Desk E12,Senior Solutions Engineer
+NT-004,Laptop,Apple,MacBook Pro 14" M3,C02ZK4567DEF,Priya Mehta,Marketing,2024-03-01,2499.00,2027-03-01,Good,SF HQ - Desk M04,Director Brand & Design
+NT-005,Laptop,Apple,MacBook Pro 14" M3,C02ZK5678EFG,Rachel Torres,Marketing,2023-09-15,2499.00,2026-09-15,Good,SF HQ - Desk M01,VP Marketing - Due for refresh Q3 2026
+NT-006,Laptop,Apple,MacBook Pro 14" M3,C02ZK6789FGH,Marcus Chen,Marketing,2024-04-01,2499.00,2027-04-01,Good,SF HQ - Desk M02,Director Demand Gen
+NT-007,Laptop,Apple,MacBook Pro 14" M3,C02ZK7890GHI,Sophia Lee,Sales,2024-01-20,2499.00,2027-01-20,Good,SF HQ - Desk S01,VP Sales
+NT-008,Laptop,Apple,MacBook Pro 14" M3,C02ZK8901HIJ,Derek Kim,Sales,2024-02-15,2499.00,2027-02-15,Good,Remote - Chicago,Sr Dir Channel & Alliances
+NT-009,Laptop,Apple,MacBook Pro 14" M3,C02ZK9012IJK,Janet Okonkwo,Customer Success,2024-03-10,2499.00,2027-03-10,Good,SF HQ - Desk CS03,VP Customer Success
+NT-010,Laptop,Apple,MacBook Pro 14" M3,C02ZK0123JKL,Tom Bradley,Security,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk IT01,CISO
+NT-011,Laptop,Apple,MacBook Pro 14" M3,C02ZK1234KLM,David Huang,Executive,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk EX01,CEO
+NT-012,Laptop,Apple,MacBook Pro 14" M3,C02ZK2345LMN,Carlos Ramirez,Finance,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk F01,CFO
+NT-013,Laptop,Apple,MacBook Pro 14" M3,C02ZK3456MNO,Jennifer Walsh,Operations,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk O01,VP Operations
+NT-014,Laptop,Apple,MacBook Pro 14" M3,C02ZK4567NOP,Amanda Hartley,Legal,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk L01,General Counsel
+NT-015,Laptop,Apple,MacBook Pro 14" M3,C02ZK5678OPQ,Alex Rodriguez,Product,2024-05-01,2499.00,2027-05-01,Good,SF HQ - Desk P03,Sr Product Manager
+NT-016,Laptop,Apple,MacBook Pro 14" M3,C02ZK6789PQR,Raj Patel,Customer Support,2024-02-01,2499.00,2027-02-01,Good,SF HQ - Desk CS10,Support Lead
+NT-017,Laptop,Apple,MacBook Pro 14" M3,C02ZK7890QRS,Lisa Park,Product,2024-01-15,2499.00,2027-01-15,Good,SF HQ - Desk P01,VP Product
+NT-018,Laptop,Apple,MacBook Pro 14" M3,C02ZK8901RST,Melissa Ostrowski,Sales,2024-06-01,2499.00,2027-06-01,Good,Remote - New York,Partner Success Manager
+NT-019,Laptop,Apple,MacBook Pro 14" M3,C02ZK9012STU,Tyler Nguyen,Sales,2024-06-01,2499.00,2027-06-01,Good,SF HQ - Desk S08,Partner Success Manager
+NT-020,Laptop,Apple,MacBook Pro 14" M3,C02ZK0123TUV,UNASSIGNED,Engineering,2025-11-15,2499.00,2028-11-15,New,SF HQ - IT Stockroom,Spare - engineering pool
+NT-021,Laptop,Apple,MacBook Pro 14" M3,C02ZK1234UVW,UNASSIGNED,General Pool,2025-11-15,2499.00,2028-11-15,New,SF HQ - IT Stockroom,Spare - general pool
+NT-022,Monitor,Dell,U2722D 27" 4K,CN-0X1R2T-3456,Marcus Webb,Engineering,2024-01-15,649.00,2027-01-15,Good,SF HQ - Desk E14,Dual monitor setup
+NT-023,Monitor,Dell,U2722D 27" 4K,CN-0X2R3T-4567,Marcus Webb,Engineering,2024-01-15,649.00,2027-01-15,Good,SF HQ - Desk E14,Dual monitor setup - second unit
+NT-024,Monitor,Dell,U2722D 27" 4K,CN-0X3R4T-5678,Jennifer Yao,Engineering,2024-01-15,649.00,2027-01-15,Good,SF HQ - Desk E08,Primary monitor
+NT-025,Monitor,Dell,U2722D 27" 4K,CN-0X4R5T-6789,Rachel Torres,Marketing,2023-09-15,649.00,2026-09-15,Good,SF HQ - Desk M01,
+NT-026,Monitor,Dell,U2722D 27" 4K,CN-0X5R6T-7890,David Huang,Executive,2024-01-15,649.00,2027-01-15,Good,SF HQ - Desk EX01,
+NT-027,Monitor,Dell,U2722D 27" 4K,CN-0X6R7T-8901,Carlos Ramirez,Finance,2024-01-15,649.00,2027-01-15,Good,SF HQ - Desk F01,
+NT-028,Monitor,Dell,U2722D 27" 4K,CN-0X7R8T-9012,UNASSIGNED,General Pool,2025-10-01,649.00,2028-10-01,New,SF HQ - IT Stockroom,Spare monitor
+NT-029,Mobile Phone,Apple,iPhone 15 Pro,F2LK123456789,David Huang,Executive,2024-02-01,999.00,2025-02-01,Good,SF HQ - Desk EX01,Warranty expired - out of AppleCare
+NT-030,Mobile Phone,Apple,iPhone 15 Pro,F2LK234567890,Marcus Webb,Engineering,2024-02-01,999.00,2025-02-01,Good,SF HQ - Desk E14,Warranty expired
+NT-031,Mobile Phone,Apple,iPhone 15 Pro,F2LK345678901,Tom Bradley,Security,2024-02-01,999.00,2025-02-01,Good,SF HQ - Desk IT01,Warranty expired
+NT-032,Mobile Phone,Apple,iPhone 15 Pro,F2LK456789012,Rachel Torres,Marketing,2024-02-01,999.00,2025-02-01,Good,SF HQ - Desk M01,Warranty expired
+NT-033,Mobile Phone,Apple,iPhone 15 Pro,F2LK567890123,Sophia Lee,Sales,2024-02-01,999.00,2025-02-01,Good,SF HQ - Desk S01,Warranty expired
+NT-034,Mobile Phone,Apple,iPhone 15 Pro,F2LK678901234,UNASSIGNED,General Pool,2025-08-01,1099.00,2026-08-01,Good,SF HQ - IT Stockroom,Loaner device
+NT-035,Conference Room AV,Poly,Poly Studio X70,SN-AV-CONF-A001,Shared,Facilities,2023-06-01,3299.00,2026-06-01,Good,SF HQ - Main Conf Room A,Large conf room - 20 person capacity
+NT-036,Conference Room AV,Poly,Poly Studio X50,SN-AV-CONF-B001,Shared,Facilities,2023-06-01,2199.00,2026-06-01,Good,SF HQ - Conf Room B,Medium conf room - 12 person capacity
+NT-037,Conference Room AV,Logitech,Rally Bar Mini,SN-AV-CONF-C001,Shared,Facilities,2024-03-01,1699.00,2027-03-01,Good,SF HQ - Conf Room C,Small conf room - 6 person capacity
+NT-038,Conference Room AV,Logitech,Rally Bar Mini,SN-AV-CONF-D001,Shared,Facilities,2024-03-01,1699.00,2027-03-01,Good,SF HQ - Conf Room D,Small conf room - 6 person capacity
+NT-039,TV/Display,LG,75" 4K QNED,SN-TV-CONF-A001,Shared,Facilities,2023-06-01,1499.00,2026-06-01,Good,SF HQ - Main Conf Room A,Primary display
+NT-040,TV/Display,LG,65" 4K QNED,SN-TV-CONF-B001,Shared,Facilities,2023-06-01,1099.00,2026-06-01,Good,SF HQ - Conf Room B,
+NT-041,Networking,Cisco,Catalyst 9300 48-port Switch,SN-SW-FLOOR5-01,Shared,IT/Infrastructure,2022-09-01,8499.00,2025-09-01,Good,SF HQ - Server Closet 5A,Warranty expired - renewal pending
+NT-042,Networking,Cisco,Catalyst 9300 48-port Switch,SN-SW-FLOOR5-02,Shared,IT/Infrastructure,2022-09-01,8499.00,2025-09-01,Good,SF HQ - Server Closet 5A,Warranty expired - renewal pending
+NT-043,Networking,Meraki,MX85 Security Appliance,SN-FW-FLOOR5-01,Shared,IT/Infrastructure,2023-03-01,2999.00,2026-03-01,Good,SF HQ - Server Closet 5A,
+NT-044,Networking,Meraki,MR56 WiFi 6E AP (x8 units),SN-AP-FLOOR5-01,Shared,IT/Infrastructure,2023-03-01,4792.00,2026-03-01,Good,SF HQ - Various ceiling mounts,8-unit WiFi AP set - batch SN
+NT-045,Printer/Scanner,HP,LaserJet Enterprise MFP M635,SN-PR-FLOOR5-01,Shared,Facilities,2023-01-15,1299.00,2026-01-15,Good,SF HQ - Print Station 1,
+NT-046,Tablet,Apple,iPad Pro 12.9" M2,DMPXQ2345678,Janet Okonkwo,Customer Success,2024-04-01,1099.00,2027-04-01,Good,SF HQ - Desk CS03,Used for customer demos
+NT-047,Tablet,Apple,iPad Pro 12.9" M2,DMPXQ3456789,James Kim,Engineering,2024-04-01,1099.00,2027-04-01,Good,SF HQ - Desk E12,Used for SE demos - mobile
+NT-048,Tablet,Apple,iPad Pro 12.9" M2,DMPXQ4567890,UNASSIGNED,Sales,2025-09-01,1099.00,2028-09-01,New,SF HQ - IT Stockroom,Demo device for AE team - pool
+NT-049,Docking Station,CalDigit,TS4 Thunderbolt 4,SN-DOCK-E14-01,Marcus Webb,Engineering,2024-01-15,299.00,2027-01-15,Good,SF HQ - Desk E14,
+NT-050,Docking Station,CalDigit,TS4 Thunderbolt 4,SN-DOCK-M01-01,Rachel Torres,Marketing,2024-01-15,299.00,2027-01-15,Good,SF HQ - Desk M01,

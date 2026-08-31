@@ -1,0 +1,52 @@
+cost_center_id,department,subdepartment,budget_category,q1,q2,q3,q4,annual_total,budget_owner,approval_status
+CC-ENG-001,Engineering,Backend Engineering,headcount,780000,800000,820000,840000,3240000,Marcus Webb,Approved
+CC-ENG-002,Engineering,Frontend Engineering,headcount,420000,430000,440000,450000,1740000,Marcus Webb,Approved
+CC-ENG-003,Engineering,DevOps & Infrastructure,headcount,280000,290000,295000,305000,1170000,Marcus Webb,Approved
+CC-ENG-004,Engineering,Security Engineering,headcount,185000,190000,195000,200000,770000,Marcus Webb,Approved
+CC-ENG-005,Engineering,QA & Testing,headcount,145000,150000,155000,160000,610000,Marcus Webb,Approved
+CC-ENG-006,Engineering,Data Engineering,headcount,175000,180000,185000,190000,730000,Marcus Webb,Approved
+CC-ENG-007,Engineering,Mobile Engineering,headcount,115000,120000,110000,105000,450000,Marcus Webb,Approved
+CC-ENG-008,Engineering,Backend Engineering,software_tools,18000,19000,19500,20000,76500,Marcus Webb,Approved
+CC-ENG-009,Engineering,DevOps & Infrastructure,software_tools,42000,43000,44000,45000,174000,Marcus Webb,Approved
+CC-ENG-010,Engineering,Backend Engineering,contractors,75000,80000,85000,90000,330000,Marcus Webb,Approved
+CC-ENG-011,Engineering,DevOps & Infrastructure,infrastructure,95000,98000,102000,106000,401000,Marcus Webb,Approved
+CC-ENG-012,Engineering,All Engineering,travel,18000,22000,20000,18000,78000,Marcus Webb,Approved
+CC-ENG-013,Engineering,All Engineering,training,15000,15000,15000,15000,60000,Marcus Webb,Approved
+CC-SALES-001,Sales,Enterprise Account Executives,headcount,380000,400000,415000,430000,1625000,Ben Alvarez,Approved
+CC-SALES-002,Sales,SMB Account Executives,headcount,195000,205000,210000,220000,830000,Ben Alvarez,Approved
+CC-SALES-003,Sales,Sales Development Representatives,headcount,165000,175000,185000,195000,720000,Ben Alvarez,Approved
+CC-SALES-004,Sales,Sales Operations,headcount,120000,125000,130000,135000,510000,Ben Alvarez,Approved
+CC-SALES-005,Sales,Sales Engineering,headcount,125000,115000,120000,120000,480000,Ben Alvarez,Approved
+CC-SALES-006,Sales,All Sales,software_tools,45000,47000,48000,50000,190000,Ben Alvarez,Approved
+CC-SALES-007,Sales,All Sales,travel,95000,98000,100000,105000,398000,Ben Alvarez,Approved
+CC-SALES-008,Sales,SDR,contractors,30000,32000,34000,36000,132000,Ben Alvarez,Approved
+CC-MKT-001,Marketing,Demand Generation,headcount,180000,190000,195000,200000,765000,Jess Dalton,Approved
+CC-MKT-002,Marketing,Content & Brand,headcount,125000,130000,135000,140000,530000,Jess Dalton,Approved
+CC-MKT-003,Marketing,Product Marketing,headcount,115000,120000,125000,130000,490000,Jess Dalton,Approved
+CC-MKT-004,Marketing,Marketing Operations,headcount,100000,100000,105000,110000,415000,Jess Dalton,Approved
+CC-MKT-005,Marketing,Demand Generation,marketing_spend,160000,170000,180000,185000,695000,Jess Dalton,Approved
+CC-MKT-006,Marketing,Content & Brand,marketing_spend,80000,85000,90000,95000,350000,Jess Dalton,Approved
+CC-MKT-007,Marketing,Events,marketing_spend,70000,70000,70000,80000,290000,Jess Dalton,Approved
+CC-MKT-008,Marketing,All Marketing,software_tools,38000,40000,42000,44000,164000,Jess Dalton,Approved
+CC-MKT-009,Marketing,All Marketing,travel,32000,35000,34000,33000,134000,Jess Dalton,Approved
+CC-MKT-010,Marketing,All Marketing,contractors,75000,80000,85000,90000,330000,Jess Dalton,Approved
+CC-CS-001,Customer Success,Enterprise CSMs,headcount,320000,330000,340000,350000,1340000,Rachel Kim,Approved
+CC-CS-002,Customer Success,SMB CSMs,headcount,180000,190000,200000,210000,780000,Rachel Kim,Approved
+CC-CS-003,Customer Success,Technical Account Managers,headcount,175000,180000,180000,180000,715000,Rachel Kim,Approved
+CC-CS-004,Customer Success,All CS,software_tools,22000,23000,24000,25000,94000,Rachel Kim,Approved
+CC-CS-005,Customer Success,All CS,travel,28000,30000,29000,28000,115000,Rachel Kim,Approved
+CC-GA-001,G_and_A,Finance,headcount,165000,170000,175000,180000,690000,Margaret Liu,Approved
+CC-GA-002,G_and_A,Legal,headcount,125000,130000,130000,135000,520000,David Park,Approved
+CC-GA-003,G_and_A,Executive,headcount,125000,130000,135000,135000,525000,Derek Simmons,Approved
+CC-GA-004,G_and_A,Finance,legal_fees,45000,46000,47000,48000,186000,Margaret Liu,Approved
+CC-GA-005,G_and_A,All G&A,software_tools,32000,33000,34000,35000,134000,Margaret Liu,Approved
+CC-HR-001,HR,Talent Acquisition,headcount,130000,135000,140000,145000,550000,Jennifer Walsh,Approved
+CC-HR-002,HR,HR Business Partners,headcount,105000,110000,115000,120000,450000,Jennifer Walsh,Approved
+CC-HR-003,HR,Total Rewards,headcount,75000,75000,75000,75000,300000,Jennifer Walsh,Approved
+CC-HR-004,HR,All HR,recruiting,85000,88000,90000,95000,358000,Jennifer Walsh,Approved
+CC-HR-005,HR,All HR,software_tools,18000,19000,20000,21000,78000,Jennifer Walsh,Approved
+CC-OPS-001,Operations,IT & Security,headcount,140000,145000,150000,155000,590000,Marcus Webb,Approved
+CC-OPS-002,Operations,Facilities,headcount,80000,82000,85000,88000,335000,Rachel Kim,Approved
+CC-OPS-003,Operations,Business Operations,headcount,55000,58000,60000,62000,235000,Rachel Kim,Approved
+CC-OPS-004,Operations,All Operations,infrastructure,95000,98000,102000,106000,401000,Marcus Webb,Approved
+CC-OPS-005,Operations,All Operations,software_tools,28000,29000,30000,31000,118000,Marcus Webb,Approved

@@ -1,0 +1,26 @@
+opportunity_id,company_name,contact_name,contact_email,stage,arr_value,probability,close_date,account_executive,notes
+OPP-2026-001,ACME Corp,Robert Stanton,r.stanton@acmecorp.com,Negotiation,185000,85,2026-04-30,Jordan Whitfield,Expansion deal for 500 additional seats; legal review underway
+OPP-2026-002,GlobalTech Inc,Sandra Beaumont,s.beaumont@globaltech.com,Proposal,220000,70,2026-05-15,Aisha Coleman,API integration module upsell; technical evaluation complete
+OPP-2026-003,Meridian Enterprises,David Cho,d.cho@meridianenterprises.com,Closed Won,387000,100,2026-01-28,Jordan Whitfield,Signed. Largest new logo in company history. Kickoff scheduled Feb 10.
+OPP-2026-004,Pinnacle Systems,Tanya Osei,t.osei@pinnaclesystems.com,Closed Won,145000,100,2026-02-11,Aisha Coleman,Beat FlowLogic. 3-year contract. Implementation started.
+OPP-2026-005,SkyBridge Ltd,Marcus Elliot,m.elliot@skybridgeltd.com,Negotiation,125000,90,2026-04-15,Samuel Osei,Annual renewal with 10% uplift; awaiting countersignature
+OPP-2026-006,Helios Healthcare,Patricia Adeyemi,p.adeyemi@helioshealthcare.com,Demo,420000,35,2026-06-30,Jordan Whitfield,Largest opportunity in pipeline; CISO security review scheduled Apr 20
+OPP-2026-007,TrueNorth Capital,Brian Kowalczyk,b.kowalczyk@truenorthcapital.com,Proposal,175000,60,2026-05-01,Aisha Coleman,Re-engaged after budget release; prev lost Q1; strong champion (Kowalczyk)
+OPP-2026-008,Crestwood Financial,Helen Park,h.park@crestwoodfinancial.com,Closed Won,118000,100,2026-02-26,Ben Lawson,Signed. 3-year deal with 20% volume discount.
+OPP-2026-009,ArcLight Media,James Fernandez,j.fernandez@arclightmedia.com,Closed Won,92000,100,2026-03-05,Aisha Coleman,Signed. Expansion potential in EU team flagged for Q3.
+OPP-2026-010,Vertex Analytics,Priya Sharma,p.sharma@vertexanalytics.com,Closed Won,87000,100,2026-03-14,Jordan Whitfield,Signed. Upsell from POC to full platform.
+OPP-2026-011,Brightstone Consulting,Omar Nassir,o.nassir@brightstoneconsulting.com,Closed Won,74000,100,2026-03-19,Megan Fitzgerald,Signed. Referral from ACME Corp. CSM handoff complete.
+OPP-2026-012,CloudNine Logistics,Rebecca Thorn,r.thorn@cloudninelogistics.com,Closed Won,68000,100,2026-03-27,Ben Lawson,Signed. Implementation phase 1 underway.
+OPP-2026-013,SteelPath Corp,Vincent Marchetti,v.marchetti@steelpath.com,Closed Lost,220000,0,2026-02-14,Jordan Whitfield,Lost to Accenture AI Suite; CIO was former Accenture partner
+OPP-2026-014,Quantum Retail,Kim Nakashima,k.nakashima@quantumretail.com,Closed Lost,130000,0,2026-03-01,Ben Lawson,Lost on price to FlowLogic; FlowLogic was 35% cheaper
+OPP-2026-015,BlueMoss Media,Chris Andersen,c.andersen@bluemossmedia.com,Closed Lost,62000,0,2026-02-22,Chloé Dupont,Lost to DataBridge Pro; feature gap: no native mobile app
+OPP-2026-016,Ironside Technologies,Derek Solano,d.solano@ironsidetech.com,Closed Won,54000,100,2026-03-31,Chloé Dupont,Signed. First deal closed by Dupont independently.
+OPP-2026-017,Halcyon HR Solutions,Nadia Volkov,n.volkov@halcyonhr.com,Closed Won,49000,100,2026-03-31,Jordan Kauffman,Signed. Sourced via LinkedIn outbound.
+OPP-2026-018,Northgate Security,Tim Ramsay,t.ramsay@northgatesecurity.com,Closed Won,26000,100,2026-02-19,Chloé Dupont,Signed. SMB deal.
+OPP-2026-019,Apex Dynamics,Carla Ruiz,c.ruiz@apexdynamics.com,Discovery,340000,25,2026-07-31,Jordan Whitfield,Early-stage enterprise; CTO contact; needs MEDDIC completion
+OPP-2026-020,Cascade Systems,Jennifer Woo,j.woo@cascadesystems.com,Prospecting,95000,15,2026-07-15,Megan Fitzgerald,Previous loss; champion returned; re-engaged April 2026
+OPP-2026-021,Harborfield Insurance,Steven Grant,s.grant@harborfieldins.com,Discovery,210000,30,2026-06-30,Aisha Coleman,Compliance automation use case; legal review critical; 4 stakeholders
+OPP-2026-022,Peregrine Technologies,Alicia Mbeki,a.mbeki@peregrine.tech,Demo,158000,45,2026-06-15,Ben Lawson,Strong champion; demo completed Apr 5; evaluation committee review next
+OPP-2026-023,Riverview Medical,Thomas Ibarra,t.ibarra@riverviewmedical.com,Prospecting,280000,10,2026-08-31,Jordan Whitfield,Cold outbound; confirmed meeting for Apr 22; HIPAA compliance required
+OPP-2026-024,Solarfield Energy,Megan Yu,m.yu@solarfieldenergy.com,Negotiation,97000,80,2026-04-22,Megan Fitzgerald,MSA final redlines; close expected before April 30
+OPP-2026-025,Atlantic Pharma,Raj Patel,r.patel@atlanticpharma.com,Proposal,315000,50,2026-05-30,Aisha Coleman,RFP submitted; 3-vendor shortlist; decision Q2; needs exec sponsor intro

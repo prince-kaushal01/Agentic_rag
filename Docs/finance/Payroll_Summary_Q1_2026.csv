@@ -1,0 +1,10 @@
+department,headcount,total_base_salary,total_bonus_paid,total_equity_vested_value,total_benefits_cost,total_employer_taxes,total_comp_cost,avg_salary,notes
+Engineering,112,2134500,185000,420000,298230,195200,3232930,76232,"Includes 8 new hires onboarded in Jan-Feb 2026; equity vesting reflects Q1 cliff for 2023 grants"
+Sales,68,1005000,312000,195000,142800,108540,1763340,59118,"Bonus reflects Q4 2025 commissions paid in Jan 2026; two enterprise AE offers accepted late March"
+Marketing,32,508000,42000,88000,71120,52430,761550,63500,"Team stable at 32; brand designer hire pending; $42K bonus is H2 2025 performance bonus"
+Customer_Success,45,672000,38000,112000,94080,68480,984560,59733,"Two CSM promotions effective March 1; headcount includes 3 technical account managers"
+G_and_A,22,415000,28000,65000,58100,41880,607980,75000,"Includes CFO (interim), legal counsel, finance team of 5, and executive assistants"
+HR,14,308000,18000,42000,43120,31000,442120,88000,"HRBP team of 4; talent acquisition of 5; total comp specialist added in February"
+Operations,18,275000,14000,38000,38500,27880,393380,60833,"IT, facilities, and security operations; one open DevSecOps role in process"
+Executive,8,816000,185000,380000,112320,84000,1577320,408000,"C-suite: CEO Derek Simmons, CPO Anita Raghavan, CTO Marcus Webb, CMO Jess Dalton, CFO interim Priya Nair, CCO Rachel Kim, CRO Ben Alvarez, CLO David Park"
+Total,319,6133500,822000,1340000,858270,609410,9763180,77146,"All figures in USD; total headcount excludes 12 contractors tracked separately"
