@@ -1,16 +1,16 @@
 # Project Dashboard — Enterprise Agentic Knowledge Assistant
 
-> Last updated: 2026-08-31 | Branch: `main` | Commit: `1024cd9`
+> Last updated: 2026-08-31 | Branch: `main` | Commit: `1024cd9` (ahead by several uncommitted changes)
 
 ---
 
 ## Overall Progress
 
 ```
-████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  18%
+███████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  25%
 ```
 
-**8 / 44 tasks complete** across 12 phases
+**11 / 46 tasks complete** across 12 phases
 
 ---
 
@@ -18,7 +18,7 @@
 
 | # | Phase | Status | Progress | Tasks Done | Tasks Total | Started | Completed |
 |---|-------|--------|----------|-----------|-------------|---------|-----------|
-| 1 | Foundation & Project Setup | 🔄 In Progress | `█████████░░░` 78% | 7 | 9 | 2026-08-30 | — |
+| 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 11 | 11 | 2026-08-30 | 2026-08-31 |
 | 2 | Document Ingestion Pipeline | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
 | 3 | Basic RAG | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
 | 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
@@ -39,25 +39,27 @@
 
 ---
 
-### Phase 1 — Foundation & Project Setup 🔄 78%
+### Phase 1 — Foundation & Project Setup ✅ 100%
 
-> *Goal: repo structure, environment, dependencies, seed data, CI pipeline.*
+> *Goal: repo structure, environment, dependencies, seed data, Docker, database schema.*
 
 ```
-█████████░░░  78%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
 | Initialize repository with full directory structure | ✅ | `1024cd9` — 2026-08-30 |
 | Create README.md and DASHBOARD.md | ✅ | 2026-08-30 — professional project docs |
-| `.env` + `.env.example` + secrets management | ✅ | 2026-08-30 — `.env` gitignored |
+| `.env` + `.env.example` + secrets management | ✅ | 2026-08-31 — `.env` gitignored, leading-space bug fixed |
 | `requirements.txt` — all 40+ packages defined | ✅ | 2026-08-31 — version conflicts resolved |
-| Python virtual environment setup + all packages installed | ✅ | 2026-08-31 — Python 3.11.8, venv verified |
+| Python virtual environment setup + all packages installed | ✅ | 2026-08-31 — Python 3.11.8, all imports verified |
 | `.gitignore` — comprehensive (venv, secrets, ML artifacts, OS files) | ✅ | 2026-08-31 |
 | 89 synthetic seed documents across 8 departments | ✅ | 2026-08-31 — HR, Sales, Finance, Legal, Engineering, Support, Marketing, Ops |
-| Docker Compose (Postgres + pgvector + Redis) | ⬜ | |
-| GitHub Actions CI skeleton (lint, test, build) | ⬜ | |
+| Docker Compose — Postgres 16 + pgvector + Redis 7.2 | ✅ | 2026-08-31 — port 5433 (native PG conflict resolved), both containers healthy |
+| SQLAlchemy models — 10 tables created in DB | ✅ | 2026-08-31 — Organization, User, Document, DocumentChunk, Conversation, Message, Task, ToolCall, Approval, AuditLog |
+| `backend/database/connection.py` — async engine + session factory | ✅ | 2026-08-31 |
+| `backend/database/init_db.py` — pgvector extension + table creation script | ✅ | 2026-08-31 — verified against live DB |
 
 ---
 
@@ -374,7 +376,9 @@ backend/tools/email.py
 | 2026-08-30 | — | 1 | README.md + DASHBOARD.md generated | 3/44 | 7% |
 | 2026-08-31 | — | 1 | `.env.example`, `.gitignore`, `requirements.txt` | 6/44 | 14% |
 | 2026-08-31 | — | 1 | Python venv set up, all 40+ packages installed | 7/44 | 16% |
-| 2026-08-31 | — | 1 | 89 synthetic seed docs generated (8 departments) | 8/44 | 18% |
+| 2026-08-31 | — | 1 | 89 synthetic seed docs generated (8 departments) | 8/46 | 17% |
+| 2026-08-31 | — | 1 | Docker Compose up — Postgres+pgvector+Redis healthy | 9/46 | 20% |
+| 2026-08-31 | — | 1 | SQLAlchemy models + DB schema — 10 tables live | 11/46 | 25% |
 
 ---
 
@@ -383,20 +387,22 @@ backend/tools/email.py
 ```
 Progress over commits
 
+25% │                                              *
+    │
+22% │                                       *
+    │
 20% │                                  *
     │
-18% │                           *
+17% │                           *
     │
-16% │                    *
+14% │                    *
     │
-14% │             *
+ 7% │             *
     │
- 7% │      *
+ 2% │      *
     │
- 2% │  *
-    │
- 0% └──────────────────────────────────────────────────
-     init   README  .gitignore  venv   docs/  (next) ...
+ 0% └──────────────────────────────────────────────────────────
+     init  README  reqs  venv  docs/  docker  db-schema  (next)
 ```
 
 *Update after each commit by adding a `*` at the correct height.*
@@ -423,6 +429,10 @@ Progress over commits
 | 2026-08-31 | `tenacity>=8.4.1,<9.0.0` range bound | deepeval requires ~=8.4; langchain allows <10; range satisfies both |
 | 2026-08-31 | `opentelemetry-api==1.24.0` pinned to 1.24.x | deepeval 1.5.2 requires ~=1.24.0; keeps eval stack compatible |
 | 2026-08-31 | docs/ kept in repo for now | Seed data makes project self-contained and demo-ready; will gitignore after ingestion pipeline + seed script built |
+| 2026-08-31 | Docker Postgres mapped to port 5433 | Native Postgres already running on 5432; avoids conflict without touching system install |
+| 2026-08-31 | `trust` auth for Docker Postgres in dev | Docker NAT makes host connections appear as external IP; trust avoids SCRAM/MD5 hash mismatch in local dev |
+| 2026-08-31 | UUID primary keys on all models | Tenant-safe, no sequential ID leakage across tenants, works with distributed systems |
+| 2026-08-31 | `tenant_id` on every table | Multi-tenancy enforced at DB level, not just app level |
 
 ---
 
