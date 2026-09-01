@@ -1,16 +1,16 @@
 # Project Dashboard — Enterprise Agentic Knowledge Assistant
 
-> Last updated: 2026-08-31 | Branch: `main` | Commit: `1024cd9` (ahead by several uncommitted changes)
+> Last updated: 2026-08-30 | Branch: `main` | Commit: `1024cd9`
 
 ---
 
 ## Overall Progress
 
 ```
-███████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  25%
+██████████████████████░░░░░░░░░░░░░░░░░░  46%
 ```
 
-**11 / 46 tasks complete** across 12 phases
+**21 / 46 tasks complete** across 12 phases
 
 ---
 
@@ -18,18 +18,18 @@
 
 | # | Phase | Status | Progress | Tasks Done | Tasks Total | Started | Completed |
 |---|-------|--------|----------|-----------|-------------|---------|-----------|
-| 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 11 | 11 | 2026-08-30 | 2026-08-31 |
-| 2 | Document Ingestion Pipeline | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
-| 3 | Basic RAG | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
-| 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
-| 5 | Authentication & Authorization | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
-| 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
-| 7 | Tool Registry & Enterprise Connectors | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 4 | — | — |
-| 8 | Human-in-the-Loop & Approvals | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
-| 9 | Memory & State Management | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
-| 10 | Security Hardening | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
-| 11 | Evaluation Suite | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
-| 12 | Observability, Cost & Deployment | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 3 | — | — |
+| 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 11 | 11 | 2026-08-30 | 2026-08-30 |
+| 2 | Document Ingestion Pipeline | ✅ Done | `████████████` 100% | 8 | 8 | 2026-08-30 | 2026-08-30 |
+| 3 | Basic RAG | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
+| 5 | Authentication & Authorization | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 7 | — | — |
+| 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
+| 7 | Tool Registry & Enterprise Connectors | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
+| 8 | Human-in-the-Loop & Approvals | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 9 | Memory & State Management | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 10 | Security Hardening | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 11 | Evaluation Suite | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 12 | Observability, Cost & Deployment | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 8 | — | — |
 
 **Status legend:** ✅ Done · 🔄 In Progress · ⬜ Not Started · 🚧 Blocked
 
@@ -51,45 +51,58 @@
 |------|--------|-------|
 | Initialize repository with full directory structure | ✅ | `1024cd9` — 2026-08-30 |
 | Create README.md and DASHBOARD.md | ✅ | 2026-08-30 — professional project docs |
-| `.env` + `.env.example` + secrets management | ✅ | 2026-08-31 — `.env` gitignored, leading-space bug fixed |
-| `requirements.txt` — all 40+ packages defined | ✅ | 2026-08-31 — version conflicts resolved |
-| Python virtual environment setup + all packages installed | ✅ | 2026-08-31 — Python 3.11.8, all imports verified |
-| `.gitignore` — comprehensive (venv, secrets, ML artifacts, OS files) | ✅ | 2026-08-31 |
-| 89 synthetic seed documents across 8 departments | ✅ | 2026-08-31 — HR, Sales, Finance, Legal, Engineering, Support, Marketing, Ops |
-| Docker Compose — Postgres 16 + pgvector + Redis 7.2 | ✅ | 2026-08-31 — port 5433 (native PG conflict resolved), both containers healthy |
-| SQLAlchemy models — 10 tables created in DB | ✅ | 2026-08-31 — Organization, User, Document, DocumentChunk, Conversation, Message, Task, ToolCall, Approval, AuditLog |
-| `backend/database/connection.py` — async engine + session factory | ✅ | 2026-08-31 |
-| `backend/database/init_db.py` — pgvector extension + table creation script | ✅ | 2026-08-31 — verified against live DB |
+| `.env` + `.env.example` + secrets management | ✅ | 2026-08-30 — `.env` gitignored, leading-space bug fixed |
+| `requirements.txt` — all 40+ packages defined | ✅ | 2026-08-30 — version conflicts resolved |
+| Python virtual environment setup + all packages installed | ✅ | 2026-08-30 — Python 3.11.8, all imports verified |
+| `.gitignore` — comprehensive (venv, secrets, ML artifacts, OS files) | ✅ | 2026-08-30 |
+| 89 synthetic seed documents across 8 departments | ✅ | 2026-08-30 — HR, Sales, Finance, Legal, Engineering, Support, Marketing, Ops |
+| Docker Compose — Postgres 16 + pgvector + Redis 7.2 | ✅ | 2026-08-30 — port 5433 (native PG conflict resolved), both containers healthy |
+| SQLAlchemy models — 10 tables created in DB | ✅ | 2026-08-30 — Organization, User, Document, DocumentChunk, Conversation, Message, Task, ToolCall, Approval, AuditLog |
+| `backend/database/connection.py` — async engine + session factory | ✅ | 2026-08-30 |
+| `backend/database/init_db.py` — pgvector extension + table creation script | ✅ | 2026-08-30 — verified against live DB |
 
 ---
 
-### Phase 2 — Document Ingestion Pipeline ⬜ 0%
+### Phase 2 — Document Ingestion Pipeline ✅ 100%
 
-> *Goal: upload any supported file format; parse, chunk, embed, and index it into pgvector + BM25.*
+> *Goal: upload any supported file format; parse, chunk, embed, and index it into pgvector.*
 
 ```
-░░░░░░░░░░░░  0%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| File parsers: PDF, DOCX, TXT, MD, CSV, HTML | ⬜ | |
-| Text cleaning & structure extraction | ⬜ | |
-| Semantic + structural chunker | ⬜ | |
-| Metadata attachment per chunk (doc_id, section, page, tenant, ACL) | ⬜ | |
-| Embedding generation (batch + async) | ⬜ | |
-| pgvector indexing | ⬜ | |
-| BM25 / full-text index | ⬜ | |
-| `/documents/upload` API endpoint | ⬜ | |
+| File parsers: PDF, DOCX, TXT, MD, CSV, XLSX | ✅ | `ingestion/parsers/` — 5 parsers + auto-detect registry |
+| Text cleaning & structure extraction | ✅ | Per-format: sections (DOCX/MD), pages (PDF), rows (CSV/XLSX) |
+| Semantic + structural chunker | ✅ | `ingestion/chunking/chunker.py` — sections → pages → full content fallback, overlapping windows |
+| Metadata attachment per chunk (doc_id, section, page, tenant, ACL) | ✅ | All fields on `DocumentChunk` model, propagated from parser |
+| Embedding generation (batch + async) | ✅ | `ingestion/embeddings/embedder.py` — `all-MiniLM-L6-v2`, 384-dim, cosine-normalized |
+| pgvector indexing | ✅ | `ingestion/indexing/pgvector_index.py` — upsert + chunk insert, `Vector(384)` column |
+| Ingestion pipeline orchestrator | ✅ | `ingestion/pipeline.py` — `run_pipeline()` ties all stages together |
+| Seed script — all 89 documents ingested | ✅ | `ingestion/seed.py` — **89 docs / 1907 chunks** in pgvector, 0 failures |
 
-**Key files to build:**
+**Key files built:**
 ```
-ingestion/parsers/
-ingestion/chunking/
-ingestion/embeddings/
-ingestion/indexing/
-backend/api/routes/documents.py
+ingestion/parsers/base.py
+ingestion/parsers/pdf_parser.py
+ingestion/parsers/docx_parser.py
+ingestion/parsers/markdown_parser.py
+ingestion/parsers/csv_parser.py
+ingestion/parsers/excel_parser.py
+ingestion/parsers/registry.py
+ingestion/chunking/chunker.py
+ingestion/embeddings/embedder.py
+ingestion/indexing/pgvector_index.py
+ingestion/pipeline.py
+ingestion/seed.py
 ```
+
+**Ingestion stats:**
+- Documents indexed: **89 / 89**
+- Total chunks in pgvector: **1,907**
+- Embedding model: `all-MiniLM-L6-v2` (384 dimensions)
+- Departments covered: customer_support, engineering, finance, hr, legal, marketing, operations, sales
 
 ---
 
@@ -113,7 +126,6 @@ backend/api/routes/documents.py
 ```
 backend/retrieval/semantic.py
 backend/api/routes/chat.py
-backend/database/models/conversations.py
 ```
 
 ---
@@ -372,13 +384,15 @@ backend/tools/email.py
 
 | Date | Commit | Phase | What Changed | Tasks Completed | Total % |
 |------|--------|-------|-------------|----------------|---------|
-| 2026-08-30 | `1024cd9` | 1 | Initial commit — repo created | 1/44 | 2% |
-| 2026-08-30 | — | 1 | README.md + DASHBOARD.md generated | 3/44 | 7% |
-| 2026-08-31 | — | 1 | `.env.example`, `.gitignore`, `requirements.txt` | 6/44 | 14% |
-| 2026-08-31 | — | 1 | Python venv set up, all 40+ packages installed | 7/44 | 16% |
-| 2026-08-31 | — | 1 | 89 synthetic seed docs generated (8 departments) | 8/46 | 17% |
-| 2026-08-31 | — | 1 | Docker Compose up — Postgres+pgvector+Redis healthy | 9/46 | 20% |
-| 2026-08-31 | — | 1 | SQLAlchemy models + DB schema — 10 tables live | 11/46 | 25% |
+| 2026-08-30 | `1024cd9` | 1 | Initial commit — repo created | 1/46 | 2% |
+| 2026-08-30 | — | 1 | README.md + DASHBOARD.md generated | 3/46 | 7% |
+| 2026-08-30 | — | 1 | `.env.example`, `.gitignore`, `requirements.txt` | 6/46 | 14% |
+| 2026-08-30 | — | 1 | Python venv set up, all 40+ packages installed | 7/46 | 16% |
+| 2026-08-30 | — | 1 | 89 synthetic seed docs generated (8 departments) | 8/46 | 17% |
+| 2026-08-30 | — | 1 | Docker Compose up — Postgres+pgvector+Redis healthy | 9/46 | 20% |
+| 2026-08-30 | — | 1 | SQLAlchemy models + DB schema — 10 tables live | 11/46 | 25% |
+| 2026-08-30 | — | 2 | 5 parsers + registry, chunker, embedder, pgvector indexer | 19/46 | 41% |
+| 2026-08-30 | — | 2 | Seed script — 89 docs / 1907 chunks indexed, 0 failures | 21/46 | 46% |
 
 ---
 
@@ -387,6 +401,10 @@ backend/tools/email.py
 ```
 Progress over commits
 
+46% │                                                        * *
+    │
+41% │                                                    *
+    │
 25% │                                              *
     │
 22% │                                       *
@@ -401,8 +419,8 @@ Progress over commits
     │
  2% │      *
     │
- 0% └──────────────────────────────────────────────────────────
-     init  README  reqs  venv  docs/  docker  db-schema  (next)
+ 0% └──────────────────────────────────────────────────────────────
+     init  README  reqs  venv  docs/  docker  db    parsers  seed
 ```
 
 *Update after each commit by adding a `*` at the correct height.*
@@ -425,14 +443,16 @@ Progress over commits
 | 2026-08-30 | LangGraph for agent orchestration | Explicit state graph; easier to debug than implicit chains |
 | 2026-08-30 | Modular monolith (not microservices) | Appropriate for 2-week build; clean module boundaries still present |
 | 2026-08-30 | Simulated CRM/email (not live integrations) | Demonstrates multi-system orchestration without credential complexity |
-| 2026-08-31 | `anthropic>=0.41.0`, `openai>=1.58.1,<2.0.0` flexible bounds | LangChain ecosystem has tight interdependencies; strict pins caused resolution failures |
-| 2026-08-31 | `tenacity>=8.4.1,<9.0.0` range bound | deepeval requires ~=8.4; langchain allows <10; range satisfies both |
-| 2026-08-31 | `opentelemetry-api==1.24.0` pinned to 1.24.x | deepeval 1.5.2 requires ~=1.24.0; keeps eval stack compatible |
-| 2026-08-31 | docs/ kept in repo for now | Seed data makes project self-contained and demo-ready; will gitignore after ingestion pipeline + seed script built |
-| 2026-08-31 | Docker Postgres mapped to port 5433 | Native Postgres already running on 5432; avoids conflict without touching system install |
-| 2026-08-31 | `trust` auth for Docker Postgres in dev | Docker NAT makes host connections appear as external IP; trust avoids SCRAM/MD5 hash mismatch in local dev |
-| 2026-08-31 | UUID primary keys on all models | Tenant-safe, no sequential ID leakage across tenants, works with distributed systems |
-| 2026-08-31 | `tenant_id` on every table | Multi-tenancy enforced at DB level, not just app level |
+| 2026-08-30 | `anthropic>=0.41.0`, `openai>=1.58.1,<2.0.0` flexible bounds | LangChain ecosystem has tight interdependencies; strict pins caused resolution failures |
+| 2026-08-30 | `tenacity>=8.4.1,<9.0.0` range bound | deepeval requires ~=8.4; langchain allows <10; range satisfies both |
+| 2026-08-30 | `opentelemetry-api==1.24.0` pinned to 1.24.x | deepeval 1.5.2 requires ~=1.24.0; keeps eval stack compatible |
+| 2026-08-30 | docs/ kept in repo for now | Seed data makes project self-contained and demo-ready |
+| 2026-08-30 | Docker Postgres mapped to port 5433 | Native Postgres already running on 5432; avoids conflict without touching system install |
+| 2026-08-30 | `trust` auth for Docker Postgres in dev | Docker NAT makes host connections appear as external IP; trust avoids SCRAM/MD5 hash mismatch in local dev |
+| 2026-08-30 | UUID primary keys on all models | Tenant-safe, no sequential ID leakage across tenants, works with distributed systems |
+| 2026-08-30 | `tenant_id` on every table | Multi-tenancy enforced at DB level, not just app level |
+| 2026-08-30 | `all-MiniLM-L6-v2` at 384 dims (not OpenAI 1536) | Local model, no API cost, fast batch embedding; swap to OpenAI text-embedding-3-small for production |
+| 2026-08-30 | Section → page → full-content chunk fallback strategy | Preserves document structure; gracefully handles docs without clear sections or page breaks |
 
 ---
 
