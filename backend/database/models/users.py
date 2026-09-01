@@ -44,4 +44,8 @@ class User(BaseModel):
     organization: Mapped["Organization"] = relationship("Organization", back_populates="users")
     conversations: Mapped[list] = relationship("Conversation", back_populates="user")
     audit_logs: Mapped[list] = relationship("AuditLog", back_populates="user")
-    approvals: Mapped[list] = relationship("Approval", back_populates="reviewed_by_user")
+    approvals: Mapped[list] = relationship(
+        "Approval",
+        foreign_keys="Approval.reviewed_by",
+        back_populates="reviewed_by_user",
+    )
