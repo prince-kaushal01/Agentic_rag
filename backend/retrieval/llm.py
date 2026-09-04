@@ -1,5 +1,5 @@
 """
-LLM call layer — wraps Anthropic Claude.
+LLM call layer — wraps Google Gemini via google-genai SDK.
 Returns the answer text, token counts, and extracted citations.
 """
 from __future__ import annotations
@@ -8,17 +8,19 @@ import os
 import re
 from dataclasses import dataclass, field
 
-import anthropic
+from google import genai
+from google.genai import types
+from dotenv import load_dotenv
 
-from backend.retrieval.context_builder import BuiltContext, SourceCitation
+from backend.retrieval.context_builder import BuiltContext
 
-_client: anthropic.Anthropic | None = None
+load_dotenv()
 
-MODEL = os.getenv("LLM_MODEL", "claude-haiku-4-5-20251001")   # fast + cheap for RAG
+MODEL = os.getenv("LLM_MODEL", "gemini-2.5-flash")
 
-# Cost per 1M tokens (USD) — update if model changes
-_INPUT_COST_PER_M = 0.80
-_OUTPUT_COST_PER_M = 4.00
+# Cost per 1M tokens (USD) — gemini-2.0-flash pricing
+_INPUT_COST_PER_M = 0.10
+_OUTPUT_COST_PER_M = 0.40
 
 SYSTEM_PROMPT = """\
 You are a knowledgeable assistant for NovaTech Solutions employees.
@@ -28,21 +30,13 @@ with its reference number like [1], [2], etc.
 If the answer is not in the context, say so clearly — do not guess or hallucinate.
 """
 
-
-@dataclass
-class LLMResponse:
-    answer: str
-    input_tokens: int
-    output_tokens: int
-    cost_usd: float
-    model: str
-    cited_indices: list[int] = field(default_factory=list)   # 1-based refs found in answer
+_client: genai.Client | None = None
 
 
-def _get_client() -> anthropic.Anthropic:
+def _get_client() -> genai.Client:
     global _client
     if _client is None:
-        _client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        _client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
     return _client
 
 
@@ -51,15 +45,25 @@ def _extract_citations(text: str) -> list[int]:
     return sorted({int(m) for m in re.findall(r"\[(\d+)\]", text)})
 
 
+@dataclass
+class LLMResponse:
+    answer: str
+    input_tokens: int
+    output_tokens: int
+    cost_usd: float
+    model: str
+    cited_indices: list[int] = field(default_factory=list)
+
+
 def answer_with_context(
     query: str,
     context: BuiltContext,
     conversation_history: list[dict] | None = None,
 ) -> LLMResponse:
     """
-    Call Claude with the retrieved context and return a structured response.
+    Call Gemini with the retrieved context and return a structured response.
 
-    conversation_history: list of {"role": "user"|"assistant", "content": str}
+    conversation_history: list of {"role": "user"|"model", "content": str}
     """
     client = _get_client()
 
@@ -69,21 +73,28 @@ def answer_with_context(
         f"## Question\n\n{query}"
     )
 
-    messages: list[dict] = []
+    # Build message history for multi-turn
+    contents: list[types.Content] = []
     if conversation_history:
-        messages.extend(conversation_history)
-    messages.append({"role": "user", "content": user_content})
+        for msg in conversation_history:
+            role = "model" if msg["role"] == "assistant" else "user"
+            contents.append(types.Content(role=role, parts=[types.Part(text=msg["content"])]))
 
-    response = client.messages.create(
+    contents.append(types.Content(role="user", parts=[types.Part(text=user_content)]))
+
+    response = client.models.generate_content(
         model=MODEL,
-        max_tokens=1024,
-        system=SYSTEM_PROMPT,
-        messages=messages,
+        contents=contents,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            max_output_tokens=1024,
+            temperature=0.2,
+        ),
     )
 
-    answer = response.content[0].text
-    input_tok = response.usage.input_tokens
-    output_tok = response.usage.output_tokens
+    answer = response.text or ""
+    input_tok = response.usage_metadata.prompt_token_count or 0
+    output_tok = response.usage_metadata.candidates_token_count or 0
     cost = (input_tok / 1_000_000 * _INPUT_COST_PER_M) + (
         output_tok / 1_000_000 * _OUTPUT_COST_PER_M
     )
