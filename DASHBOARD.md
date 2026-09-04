@@ -7,10 +7,10 @@
 ## Overall Progress
 
 ```
-██████████████████████░░░░░░░░░░░░░░░░░░  46%
+██████████████████████████████░░░░░░░░░░  57%
 ```
 
-**21 / 46 tasks complete** across 12 phases
+**26 / 46 tasks complete** across 12 phases
 
 ---
 
@@ -20,7 +20,7 @@
 |---|-------|--------|----------|-----------|-------------|---------|-----------|
 | 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 11 | 11 | 2026-08-30 | 2026-08-30 |
 | 2 | Document Ingestion Pipeline | ✅ Done | `████████████` 100% | 8 | 8 | 2026-08-30 | 2026-08-30 |
-| 3 | Basic RAG | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
+| 3 | Basic RAG | ✅ Done | `████████████` 100% | 5 | 5 | 2026-09-04 | 2026-09-04 |
 | 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
 | 5 | Authentication & Authorization | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 7 | — | — |
 | 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
@@ -106,27 +106,36 @@ ingestion/seed.py
 
 ---
 
-### Phase 3 — Basic RAG ⬜ 0%
+### Phase 3 — Basic RAG ✅ 100%
 
 > *Goal: question → vector retrieval → LLM answer with source citations.*
 
 ```
-░░░░░░░░░░░░  0%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Semantic retrieval (pgvector cosine similarity) | ⬜ | |
-| Context builder (top-K chunks → prompt) | ⬜ | |
-| LLM call with citation extraction | ⬜ | |
-| `/chat` endpoint (basic) | ⬜ | |
-| Conversation history persistence | ⬜ | |
+| Semantic retrieval (pgvector cosine similarity) | ✅ | `backend/retrieval/semantic.py` — tenant + ACL filters, conditional dept filter |
+| Context builder (top-K chunks → prompt) | ✅ | `backend/retrieval/context_builder.py` — numbered blocks, 12k char limit |
+| LLM call with citation extraction | ✅ | `backend/retrieval/llm.py` — Gemini 2.5 Flash, [N] citation regex |
+| `/chat` endpoint (basic) | ✅ | `POST /chat` — retrieval → context → LLM → response with sources |
+| Conversation history persistence | ✅ | Messages saved to DB; multi-turn history loaded per conversation_id |
 
-**Key files to build:**
+**Key files built:**
 ```
 backend/retrieval/semantic.py
+backend/retrieval/context_builder.py
+backend/retrieval/llm.py
 backend/api/routes/chat.py
+backend/api/app.py
 ```
+
+**Live test results:**
+- Query: "What is the remote work policy at NovaTech?" → correct answer with [2] citation
+- Multi-turn: follow-up in same conversation_id → context-aware answer
+- ACL verified: `Remote_Work_Policy.md` (restricted) only returned for `access_level=restricted`
+- Cost: ~$0.000112 per query | Model: `gemini-2.5-flash`
 
 ---
 
@@ -393,6 +402,8 @@ backend/tools/email.py
 | 2026-08-30 | — | 1 | SQLAlchemy models + DB schema — 10 tables live | 11/46 | 25% |
 | 2026-08-30 | — | 2 | 5 parsers + registry, chunker, embedder, pgvector indexer | 19/46 | 41% |
 | 2026-08-30 | — | 2 | Seed script — 89 docs / 1907 chunks indexed, 0 failures | 21/46 | 46% |
+| 2026-09-04 | — | 3 | Semantic retrieval, context builder, Gemini LLM layer | 24/46 | 52% |
+| 2026-09-04 | — | 3 | `/chat` endpoint + conversation persistence — Phase 3 complete | 26/46 | 57% |
 
 ---
 

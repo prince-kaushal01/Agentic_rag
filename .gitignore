@@ -6,7 +6,6 @@
 # ── Secrets & Environment ──────────────────────────────────────
 .env
 .env.*
-!.env.example
 *.pem
 *.key
 *.cert

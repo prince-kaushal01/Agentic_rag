@@ -23,6 +23,7 @@ hiredis==3.1.1
 
 # ── AI / LLM ─────────────────────────────────────────────────
 anthropic>=0.41.0               # langchain-anthropic needs >=0.41
+google-genai>=1.0.0             # Gemini LLM (primary LLM provider)
 openai>=1.58.1,<2.0.0           # langchain-openai needs >=1.58.1,<2.0.0
 tiktoken==0.8.0
 

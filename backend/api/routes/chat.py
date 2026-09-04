@@ -23,7 +23,11 @@ from __future__ import annotations
 import uuid
 from typing import Optional
 
+import logging
+import traceback
 from fastapi import APIRouter, Depends, HTTPException
+
+logger = logging.getLogger(__name__)
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -120,6 +124,16 @@ async def _load_history(session: AsyncSession, conversation_id: uuid.UUID) -> li
 
 @router.post("", response_model=ChatResponse)
 async def chat(req: ChatRequest, session: AsyncSession = Depends(get_session)):
+    try:
+        return await _chat_impl(req, session)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error("Chat error: %s\n%s", e, traceback.format_exc())
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
     tenant_id = uuid.UUID(req.tenant_id)
     user_id = uuid.UUID(req.user_id)
 
@@ -148,8 +162,11 @@ async def chat(req: ChatRequest, session: AsyncSession = Depends(get_session)):
     # 4. Build context
     context = build_context(chunks)
 
-    # 5. LLM call
-    llm_resp = answer_with_context(req.query, context, conversation_history=history)
+    # 5. LLM call — run sync blocking call in thread pool so it doesn't block the event loop
+    import asyncio
+    llm_resp = await asyncio.to_thread(
+        answer_with_context, req.query, context, history
+    )
 
     # 6. Map cited indices → sources
     cited_sources = []
