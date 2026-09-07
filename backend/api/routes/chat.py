@@ -1,5 +1,8 @@
 """
-POST /chat  — Basic RAG chat endpoint.
+POST /chat  — Production RAG chat endpoint.
+
+Pipeline: query rewrite → hybrid search (semantic + BM25 + RRF) → cross-encoder rerank
+          → context build → LLM answer → persist + return
 
 Request body:
     query           str         User question
@@ -8,26 +11,29 @@ Request body:
     user_id         str         User UUID
     access_level    str         Caller's max access level (public/internal/confidential/restricted)
     departments     list[str]   Optional department filter (null = all permitted)
-    top_k           int         Number of chunks to retrieve (default 6)
+    top_k           int         Final chunks sent to LLM (default 6)
+    retrieval_mode  str         "hybrid" (default) | "semantic" | "keyword"
+    rerank          bool        Whether to apply cross-encoder reranking (default True)
 
 Response:
     answer          str         LLM-generated answer with [N] citations
     sources         list        Cited document metadata
     conversation_id str         UUID of conversation (new or existing)
+    retrieval_mode  str         Mode actually used
+    rewritten_query str | null  Rewritten query if different from original
     tokens_used     dict        input / output token counts
     cost_usd        float       Estimated LLM cost for this turn
     model           str         Model ID used
 """
 from __future__ import annotations
 
+import asyncio
+import logging
+import traceback
 import uuid
 from typing import Optional
 
-import logging
-import traceback
 from fastapi import APIRouter, Depends, HTTPException
-
-logger = logging.getLogger(__name__)
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -35,9 +41,14 @@ from sqlalchemy import select
 from backend.database.connection import AsyncSessionLocal
 from backend.database.models.conversations import Conversation, Message, MessageRole
 from backend.retrieval.semantic import semantic_search
+from backend.retrieval.keyword import keyword_search
+from backend.retrieval.hybrid import hybrid_search
+from backend.retrieval.reranker import rerank
+from backend.retrieval.query_rewriter import rewrite_query
 from backend.retrieval.context_builder import build_context
 from backend.retrieval.llm import answer_with_context
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/chat", tags=["chat"])
 
 
@@ -51,6 +62,8 @@ class ChatRequest(BaseModel):
     access_level: str = "internal"
     departments: Optional[list[str]] = None
     top_k: int = Field(default=6, ge=1, le=20)
+    retrieval_mode: str = Field(default="hybrid", pattern="^(hybrid|semantic|keyword)$")
+    use_rerank: bool = True
 
 
 class SourceOut(BaseModel):
@@ -67,6 +80,8 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list[SourceOut]
     conversation_id: str
+    retrieval_mode: str
+    rewritten_query: Optional[str]
     tokens_used: dict
     cost_usd: float
     model: str
@@ -97,18 +112,14 @@ async def _get_or_create_conversation(
             raise HTTPException(status_code=404, detail="Conversation not found")
         return conv
 
-    conv = Conversation(
-        title=title[:100],
-        tenant_id=tenant_id,
-        user_id=user_id,
-    )
+    conv = Conversation(title=title[:100], tenant_id=tenant_id, user_id=user_id)
     session.add(conv)
     await session.flush()
     return conv
 
 
 async def _load_history(session: AsyncSession, conversation_id: uuid.UUID) -> list[dict]:
-    """Load prior messages for multi-turn context (last 10 turns = 20 messages)."""
+    """Load last 10 turns (20 messages) for multi-turn context."""
     result = await session.execute(
         select(Message)
         .where(Message.conversation_id == conversation_id)
@@ -139,36 +150,55 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
 
     # 1. Get or create conversation
     conv = await _get_or_create_conversation(
-        session,
-        req.conversation_id,
-        tenant_id,
-        user_id,
-        title=req.query[:80],
+        session, req.conversation_id, tenant_id, user_id, title=req.query[:80]
     )
 
-    # 2. Load conversation history for multi-turn
+    # 2. Load conversation history
     history = await _load_history(session, conv.id)
 
-    # 3. Semantic retrieval
-    chunks = await semantic_search(
-        session,
-        query=req.query,
+    # 3. Query rewriting — make query standalone if it references prior context
+    rewritten = await asyncio.to_thread(rewrite_query, req.query, history)
+    search_query = rewritten if rewritten != req.query else req.query
+    rewritten_display = rewritten if rewritten != req.query else None
+
+    # 4. Retrieval — wider candidate set before reranking
+    candidate_k = min(req.top_k * 3, 20)   # fetch 3x, rerank down to top_k
+
+    retrieval_kwargs = dict(
+        session=session,
+        query=search_query,
         tenant_id=tenant_id,
-        top_k=req.top_k,
         access_level=req.access_level,
         departments=req.departments,
     )
 
-    # 4. Build context
+    if req.retrieval_mode == "hybrid":
+        candidates = await hybrid_search(
+            **retrieval_kwargs,
+            top_k=candidate_k,
+            semantic_k=candidate_k,
+            keyword_k=candidate_k,
+        )
+    elif req.retrieval_mode == "semantic":
+        candidates = await semantic_search(**retrieval_kwargs, top_k=candidate_k)
+    else:
+        candidates = await keyword_search(**retrieval_kwargs, top_k=candidate_k)
+
+    # 5. Cross-encoder reranking
+    if req.use_rerank and candidates:
+        chunks = await asyncio.to_thread(rerank, search_query, candidates, req.top_k)
+    else:
+        chunks = candidates[: req.top_k]
+
+    # 6. Build context block
     context = build_context(chunks)
 
-    # 5. LLM call — run sync blocking call in thread pool so it doesn't block the event loop
-    import asyncio
+    # 7. LLM answer (in thread — blocking I/O)
     llm_resp = await asyncio.to_thread(
         answer_with_context, req.query, context, history
     )
 
-    # 6. Map cited indices → sources
+    # 8. Map cited indices → sources
     cited_sources = []
     for idx in llm_resp.cited_indices:
         if 1 <= idx <= len(context.sources):
@@ -185,7 +215,7 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
                 )
             )
 
-    # If LLM didn't cite anything explicitly, return all retrieved sources
+    # Fallback: if LLM cited nothing, surface all retrieved sources
     if not cited_sources:
         cited_sources = [
             SourceOut(
@@ -200,17 +230,14 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
             for src in context.sources
         ]
 
-    # 7. Persist user message
-    user_msg = Message(
+    # 9. Persist both messages
+    session.add(Message(
         role=MessageRole.user,
         content=req.query,
         conversation_id=conv.id,
         tenant_id=tenant_id,
-    )
-    session.add(user_msg)
-
-    # 8. Persist assistant message with sources + cost
-    assistant_msg = Message(
+    ))
+    session.add(Message(
         role=MessageRole.assistant,
         content=llm_resp.answer,
         token_count=llm_resp.input_tokens + llm_resp.output_tokens,
@@ -229,14 +256,15 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
         ],
         conversation_id=conv.id,
         tenant_id=tenant_id,
-    )
-    session.add(assistant_msg)
+    ))
     await session.commit()
 
     return ChatResponse(
         answer=llm_resp.answer,
         sources=cited_sources,
         conversation_id=str(conv.id),
+        retrieval_mode=req.retrieval_mode,
+        rewritten_query=rewritten_display,
         tokens_used={
             "input": llm_resp.input_tokens,
             "output": llm_resp.output_tokens,

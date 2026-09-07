@@ -7,10 +7,10 @@
 ## Overall Progress
 
 ```
-██████████████████████████████░░░░░░░░░░  57%
+████████████████████████████████████░░░░  68%
 ```
 
-**26 / 46 tasks complete** across 12 phases
+**32 / 46 tasks complete** across 12 phases
 
 ---
 
@@ -21,7 +21,7 @@
 | 1 | Foundation & Project Setup | ✅ Done | `████████████` 100% | 11 | 11 | 2026-08-30 | 2026-08-30 |
 | 2 | Document Ingestion Pipeline | ✅ Done | `████████████` 100% | 8 | 8 | 2026-08-30 | 2026-08-30 |
 | 3 | Basic RAG | ✅ Done | `████████████` 100% | 5 | 5 | 2026-09-04 | 2026-09-04 |
-| 4 | Production Retrieval | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
+| 4 | Production Retrieval | ✅ Done | `████████████` 100% | 6 | 6 | 2026-09-07 | 2026-09-07 |
 | 5 | Authentication & Authorization | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 7 | — | — |
 | 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
 | 7 | Tool Registry & Enterprise Connectors | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
@@ -139,29 +139,36 @@ backend/api/app.py
 
 ---
 
-### Phase 4 — Production Retrieval ⬜ 0%
+### Phase 4 — Production Retrieval ✅ 100%
 
 > *Goal: hybrid search, reranking, metadata/permission filters, query rewriting.*
 
 ```
-░░░░░░░░░░░░  0%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| BM25 / keyword retrieval | ⬜ | |
-| Hybrid fusion (RRF — Reciprocal Rank Fusion) | ⬜ | |
-| Cross-encoder reranker | ⬜ | |
-| Query analysis & rewriting | ⬜ | |
-| Metadata + permission filtering pre-retrieval | ⬜ | |
-| Document versioning support | ⬜ | |
+| BM25 / keyword retrieval | ✅ | `backend/retrieval/keyword.py` — rank-bm25, in-process index over permitted chunks |
+| Hybrid fusion (RRF — Reciprocal Rank Fusion) | ✅ | `backend/retrieval/hybrid.py` — RRF k=60, merges semantic + BM25 ranked lists |
+| Cross-encoder reranker | ✅ | `backend/retrieval/reranker.py` — `ms-marco-MiniLM-L-6-v2`, runs on top-20 candidates |
+| Query analysis & rewriting | ✅ | `backend/retrieval/query_rewriter.py` — Gemini standalone query rewriter for multi-turn |
+| Metadata + permission filtering pre-retrieval | ✅ | ACL + tenant + department filters applied at SQL level in all retrieval paths |
+| Document versioning support | ✅ | `is_latest` + `version` columns on Document model; filter-ready |
 
-**Key files to build:**
+**Key files built:**
 ```
 backend/retrieval/keyword.py
 backend/retrieval/hybrid.py
 backend/retrieval/reranker.py
+backend/retrieval/query_rewriter.py
 ```
+
+**Live test results:**
+- Query: "What are the salary bands for senior engineers?" → `$180k–$240k` with exact section citations
+- Retrieval mode: `hybrid` — semantic + BM25 fused via RRF, then cross-encoder reranked
+- Cross-encoder pushed the most relevant chunk (Engineering Salary Bands section) to top
+- Cost: ~$0.000181 per query | ACL: only `restricted`-level salary docs surfaced
 
 **Metrics to track once live:**
 
@@ -404,6 +411,7 @@ backend/tools/email.py
 | 2026-08-30 | — | 2 | Seed script — 89 docs / 1907 chunks indexed, 0 failures | 21/46 | 46% |
 | 2026-09-04 | — | 3 | Semantic retrieval, context builder, Gemini LLM layer | 24/46 | 52% |
 | 2026-09-04 | — | 3 | `/chat` endpoint + conversation persistence — Phase 3 complete | 26/46 | 57% |
+| 2026-09-07 | — | 4 | BM25, hybrid RRF fusion, cross-encoder reranker, query rewriter | 32/46 | 68% |
 
 ---
 
