@@ -1,29 +1,11 @@
 """
-POST /chat  — Production RAG chat endpoint.
+POST /chat  — Production RAG chat endpoint (JWT-authenticated).
 
 Pipeline: query rewrite → hybrid search (semantic + BM25 + RRF) → cross-encoder rerank
-          → context build → LLM answer → persist + return
+          → context build → LLM answer → audit log → persist + return
 
-Request body:
-    query           str         User question
-    conversation_id str | null  Existing conversation UUID (null = new)
-    tenant_id       str         Organization UUID
-    user_id         str         User UUID
-    access_level    str         Caller's max access level (public/internal/confidential/restricted)
-    departments     list[str]   Optional department filter (null = all permitted)
-    top_k           int         Final chunks sent to LLM (default 6)
-    retrieval_mode  str         "hybrid" (default) | "semantic" | "keyword"
-    rerank          bool        Whether to apply cross-encoder reranking (default True)
-
-Response:
-    answer          str         LLM-generated answer with [N] citations
-    sources         list        Cited document metadata
-    conversation_id str         UUID of conversation (new or existing)
-    retrieval_mode  str         Mode actually used
-    rewritten_query str | null  Rewritten query if different from original
-    tokens_used     dict        input / output token counts
-    cost_usd        float       Estimated LLM cost for this turn
-    model           str         Model ID used
+Permissions are derived entirely from the JWT token — the caller cannot
+override their own access_level or departments.
 """
 from __future__ import annotations
 
@@ -33,7 +15,7 @@ import traceback
 import uuid
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -47,6 +29,8 @@ from backend.retrieval.reranker import rerank
 from backend.retrieval.query_rewriter import rewrite_query
 from backend.retrieval.context_builder import build_context
 from backend.retrieval.llm import answer_with_context
+from backend.auth.dependencies import get_current_user, CurrentUser
+from backend.auth.audit import write_audit_log
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/chat", tags=["chat"])
@@ -57,10 +41,6 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 class ChatRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=2000)
     conversation_id: Optional[str] = None
-    tenant_id: str
-    user_id: str
-    access_level: str = "internal"
-    departments: Optional[list[str]] = None
     top_k: int = Field(default=6, ge=1, le=20)
     retrieval_mode: str = Field(default="hybrid", pattern="^(hybrid|semantic|keyword)$")
     use_rerank: bool = True
@@ -110,6 +90,9 @@ async def _get_or_create_conversation(
         conv = result.scalar_one_or_none()
         if conv is None:
             raise HTTPException(status_code=404, detail="Conversation not found")
+        # Ensure conversation belongs to this tenant
+        if conv.tenant_id != tenant_id:
+            raise HTTPException(status_code=403, detail="Access denied")
         return conv
 
     conv = Conversation(title=title[:100], tenant_id=tenant_id, user_id=user_id)
@@ -119,7 +102,6 @@ async def _get_or_create_conversation(
 
 
 async def _load_history(session: AsyncSession, conversation_id: uuid.UUID) -> list[dict]:
-    """Load last 10 turns (20 messages) for multi-turn context."""
     result = await session.execute(
         select(Message)
         .where(Message.conversation_id == conversation_id)
@@ -134,9 +116,14 @@ async def _load_history(session: AsyncSession, conversation_id: uuid.UUID) -> li
 # ── Endpoint ──────────────────────────────────────────────────────────────────
 
 @router.post("", response_model=ChatResponse)
-async def chat(req: ChatRequest, session: AsyncSession = Depends(get_session)):
+async def chat(
+    req: ChatRequest,
+    request: Request,
+    session: AsyncSession = Depends(get_session),
+    current_user: CurrentUser = Depends(get_current_user),
+):
     try:
-        return await _chat_impl(req, session)
+        return await _chat_impl(req, request, session, current_user)
     except HTTPException:
         raise
     except Exception as e:
@@ -144,9 +131,15 @@ async def chat(req: ChatRequest, session: AsyncSession = Depends(get_session)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
-    tenant_id = uuid.UUID(req.tenant_id)
-    user_id = uuid.UUID(req.user_id)
+async def _chat_impl(
+    req: ChatRequest,
+    request: Request,
+    session: AsyncSession,
+    current_user: CurrentUser,
+) -> ChatResponse:
+    tenant_id = current_user.tenant_id
+    user_id = current_user.user_id
+    perms = current_user.permissions
 
     # 1. Get or create conversation
     conv = await _get_or_create_conversation(
@@ -156,20 +149,19 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
     # 2. Load conversation history
     history = await _load_history(session, conv.id)
 
-    # 3. Query rewriting — make query standalone if it references prior context
+    # 3. Query rewriting
     rewritten = await asyncio.to_thread(rewrite_query, req.query, history)
     search_query = rewritten if rewritten != req.query else req.query
     rewritten_display = rewritten if rewritten != req.query else None
 
-    # 4. Retrieval — wider candidate set before reranking
-    candidate_k = min(req.top_k * 3, 20)   # fetch 3x, rerank down to top_k
-
+    # 4. Retrieval — use permissions from JWT, never from request body
+    candidate_k = min(req.top_k * 3, 20)
     retrieval_kwargs = dict(
         session=session,
         query=search_query,
         tenant_id=tenant_id,
-        access_level=req.access_level,
-        departments=req.departments,
+        access_level=perms.max_access_level,        # from JWT role
+        departments=perms.allowed_departments,       # from JWT role
     )
 
     if req.retrieval_mode == "hybrid":
@@ -190,15 +182,13 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
     else:
         chunks = candidates[: req.top_k]
 
-    # 6. Build context block
+    # 6. Build context
     context = build_context(chunks)
 
-    # 7. LLM answer (in thread — blocking I/O)
-    llm_resp = await asyncio.to_thread(
-        answer_with_context, req.query, context, history
-    )
+    # 7. LLM answer
+    llm_resp = await asyncio.to_thread(answer_with_context, req.query, context, history)
 
-    # 8. Map cited indices → sources
+    # 8. Map citations → sources
     cited_sources = []
     for idx in llm_resp.cited_indices:
         if 1 <= idx <= len(context.sources):
@@ -214,8 +204,6 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
                     relevance_score=round(src.score, 4),
                 )
             )
-
-    # Fallback: if LLM cited nothing, surface all retrieved sources
     if not cited_sources:
         cited_sources = [
             SourceOut(
@@ -230,7 +218,25 @@ async def _chat_impl(req: ChatRequest, session: AsyncSession) -> ChatResponse:
             for src in context.sources
         ]
 
-    # 9. Persist both messages
+    # 9. Audit log
+    await write_audit_log(
+        session,
+        action="chat.query",
+        resource_type="conversation",
+        resource_id=str(conv.id),
+        tenant_id=tenant_id,
+        user_id=user_id,
+        outcome="success",
+        ip_address=request.client.host if request.client else None,
+        extra={
+            "retrieval_mode": req.retrieval_mode,
+            "chunks_retrieved": len(chunks),
+            "tokens": llm_resp.input_tokens + llm_resp.output_tokens,
+            "cost_usd": llm_resp.cost_usd,
+        },
+    )
+
+    # 10. Persist messages
     session.add(Message(
         role=MessageRole.user,
         content=req.query,
