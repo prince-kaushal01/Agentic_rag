@@ -1,16 +1,16 @@
 # Project Dashboard — Enterprise Agentic Knowledge Assistant
 
-> Last updated: 2026-08-30 | Branch: `main` | Commit: `1024cd9`
+> Last updated: 2026-09-01 | Branch: `main` | Commit: `1024cd9`
 
 ---
 
 ## Overall Progress
 
 ```
-██████████████████████████████████████████  80%
+████████████████████████████████████████████████  87%
 ```
 
-**39 / 46 tasks complete** across 12 phases
+**45 / 52 tasks complete** across 12 phases
 
 ---
 
@@ -23,7 +23,7 @@
 | 3 | Basic RAG | ✅ Done | `████████████` 100% | 5 | 5 | 2026-09-04 | 2026-09-04 |
 | 4 | Production Retrieval | ✅ Done | `████████████` 100% | 6 | 6 | 2026-09-07 | 2026-09-07 |
 | 5 | Authentication & Authorization | ✅ Done | `████████████` 100% | 7 | 7 | 2026-09-11 | 2026-09-11 |
-| 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
+| 6 | Agent Runtime | ✅ Done | `████████████` 100% | 6 | 6 | 2026-09-01 | 2026-09-01 |
 | 7 | Tool Registry & Enterprise Connectors | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
 | 8 | Human-in-the-Loop & Approvals | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
 | 9 | Memory & State Management | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
@@ -230,22 +230,22 @@ backend/api/routes/auth.py    — /auth/* endpoints
 
 ---
 
-### Phase 6 — Agent Runtime ⬜ 0%
+### Phase 6 — Agent Runtime ✅ 100%
 
 > *Goal: planner decomposes multi-step tasks; router selects retrieval vs. tool; executor runs steps with bounded budget.*
 
 ```
-░░░░░░░░░░░░  0%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Task planner (LangGraph graph) | ⬜ | |
-| Retrieval vs. tool router | ⬜ | |
-| Step executor with agent state | ⬜ | |
-| Max-step budget + early termination | ⬜ | |
-| `/tasks` API (create / get / trace) | ⬜ | |
-| Agent state schema | ⬜ | |
+| Task planner (LangGraph graph) | ✅ | Gemini decomposes query into 1-4 ordered steps |
+| Retrieval vs. tool router | ✅ | Keyword-first + LLM fallback routing |
+| Step executor with agent state | ✅ | `retrieve_node`, `tool_node`, `answer_node` |
+| Max-step budget + early termination | ✅ | Budget guard on every conditional edge |
+| `/tasks` API (create / get / trace) | ✅ | POST, GET, GET/{id}, GET/{id}/trace |
+| Agent state schema | ✅ | `AgentState` TypedDict + `initial_state()` factory |
 
 **Agent state schema:**
 ```json
