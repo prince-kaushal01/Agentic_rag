@@ -7,10 +7,10 @@
 ## Overall Progress
 
 ```
-████████████████████████████████████░░░░  68%
+██████████████████████████████████████████  80%
 ```
 
-**32 / 46 tasks complete** across 12 phases
+**39 / 46 tasks complete** across 12 phases
 
 ---
 
@@ -22,7 +22,7 @@
 | 2 | Document Ingestion Pipeline | ✅ Done | `████████████` 100% | 8 | 8 | 2026-08-30 | 2026-08-30 |
 | 3 | Basic RAG | ✅ Done | `████████████` 100% | 5 | 5 | 2026-09-04 | 2026-09-04 |
 | 4 | Production Retrieval | ✅ Done | `████████████` 100% | 6 | 6 | 2026-09-07 | 2026-09-07 |
-| 5 | Authentication & Authorization | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 7 | — | — |
+| 5 | Authentication & Authorization | ✅ Done | `████████████` 100% | 7 | 7 | 2026-09-11 | 2026-09-11 |
 | 6 | Agent Runtime | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
 | 7 | Tool Registry & Enterprise Connectors | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 6 | — | — |
 | 8 | Human-in-the-Loop & Approvals | ⬜ Not Started | `░░░░░░░░░░░░` 0% | 0 | 5 | — | — |
@@ -181,23 +181,41 @@ backend/retrieval/query_rewriter.py
 
 ---
 
-### Phase 5 — Authentication & Authorization ⬜ 0%
+### Phase 5 — Authentication & Authorization ✅ 100%
 
 > *Goal: JWT auth, RBAC roles, document-level ACL, multi-tenant data isolation.*
 
 ```
-░░░░░░░░░░░░  0%
+████████████  100%
 ```
 
 | Task | Status | Notes |
 |------|--------|-------|
-| JWT authentication + token refresh | ⬜ | |
-| Role definitions: Public, Engineer, Manager, HR, Admin | ⬜ | |
-| RBAC middleware (FastAPI dependency) | ⬜ | |
-| Document-level ACL (`access_level`, `department`, `tenant_id`) | ⬜ | |
-| Permission filter injected into retrieval layer | ⬜ | |
-| Audit log model + write path | ⬜ | |
-| `/auth/login` endpoint | ⬜ | |
+| JWT authentication + token refresh | ✅ | `tokens.py` — HS256, access (60min) + refresh (7d), `python-jose` |
+| Role definitions: employee/engineer/account_manager/manager/hr/admin | ✅ | `permissions.py` — max_access_level + allowed_departments per role |
+| RBAC middleware (FastAPI dependency) | ✅ | `dependencies.py` — `get_current_user`, `require_role(*roles)` factory |
+| Document-level ACL (`access_level`, `department`, `tenant_id`) | ✅ | Permissions injected into retrieval — caller cannot override their own role |
+| Permission filter injected into retrieval layer | ✅ | `/chat` reads `perms.max_access_level` + `perms.allowed_departments` from JWT |
+| Audit log model + write path | ✅ | `audit.py` — `write_audit_log()`, records auth.login, chat.query per request |
+| `/auth/register`, `/auth/login`, `/auth/refresh`, `/auth/me` | ✅ | All four endpoints live and tested |
+
+**Key files built:**
+```
+backend/auth/password.py      — bcrypt hashing (direct, avoids passlib/bcrypt 5.x issue)
+backend/auth/tokens.py        — JWT create + decode
+backend/auth/permissions.py   — role → (max_access_level, allowed_departments)
+backend/auth/dependencies.py  — get_current_user, require_role
+backend/auth/audit.py         — write_audit_log()
+backend/api/routes/auth.py    — /auth/* endpoints
+```
+
+**Live test results:**
+- `POST /auth/register` → 201, returns JWT pair
+- `POST /auth/login` → 200 (valid) / 401 (bad password) — audit log written both ways
+- `POST /auth/refresh` → 200, new access token issued
+- `GET /auth/me` → HR user: `max_access=restricted, departments=['hr']`; Admin: `departments=None`
+- `POST /chat` without token → 403; with HR token → `Remote_Work_Policy.md` (restricted) surfaced
+- `POST /chat` with wrong password → 401 (no 500 — bcrypt error handled gracefully)
 
 **Permission matrix:**
 
@@ -412,6 +430,7 @@ backend/tools/email.py
 | 2026-09-04 | — | 3 | Semantic retrieval, context builder, Gemini LLM layer | 24/46 | 52% |
 | 2026-09-04 | — | 3 | `/chat` endpoint + conversation persistence — Phase 3 complete | 26/46 | 57% |
 | 2026-09-07 | — | 4 | BM25, hybrid RRF fusion, cross-encoder reranker, query rewriter | 32/46 | 68% |
+| 2026-09-11 | — | 5 | JWT auth, RBAC, permission-aware retrieval, audit logs — Phase 5 complete | 39/46 | 80% |
 
 ---
 
