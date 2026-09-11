@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.api.routes.chat import router as chat_router
 from backend.api.routes.auth import router as auth_router
+from backend.api.routes.tasks import router as tasks_router
 
 app = FastAPI(
     title="NovaTech Knowledge Assistant",
@@ -26,6 +27,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(chat_router)
+app.include_router(tasks_router)
 
 
 @app.get("/health")
