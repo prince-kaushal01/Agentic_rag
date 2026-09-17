@@ -32,6 +32,20 @@ from backend.retrieval.llm import answer_with_context
 from backend.auth.dependencies import get_current_user, CurrentUser
 from backend.auth.audit import write_audit_log
 
+# Phase 9 — memory (graceful if Redis is unavailable)
+try:
+    from backend.memory.conversation import ConversationMemory
+    _CONV_MEMORY_ENABLED = True
+except Exception:
+    _CONV_MEMORY_ENABLED = False
+
+# Phase 12 — cost tracking (graceful if Redis is unavailable)
+try:
+    from backend.observability.cost_tracker import CostTracker
+    _COST_TRACKER_ENABLED = True
+except Exception:
+    _COST_TRACKER_ENABLED = False
+
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/chat", tags=["chat"])
 
@@ -264,6 +278,31 @@ async def _chat_impl(
         tenant_id=tenant_id,
     ))
     await session.commit()
+
+    # Phase 12: record cost
+    if _COST_TRACKER_ENABLED:
+        try:
+            await CostTracker.record(
+                input_tokens=llm_resp.input_tokens,
+                output_tokens=llm_resp.output_tokens,
+                model=llm_resp.model,
+                conversation_id=str(conv.id),
+                user_id=str(user_id),
+                tenant_id=str(tenant_id),
+            )
+        except Exception as cost_err:
+            logger.warning("CostTracker.record failed (non-fatal): %s", cost_err)
+
+    # Phase 9: persist to Redis ConversationMemory (async, non-blocking on failure)
+    if _CONV_MEMORY_ENABLED:
+        try:
+            conv_id_str = str(conv.id)
+            await ConversationMemory.add_message(conv_id_str, "user", req.query)
+            await ConversationMemory.add_message(conv_id_str, "assistant", llm_resp.answer)
+            # Compress if history has grown large
+            await ConversationMemory.summarize_if_needed(conv_id_str, threshold=30)
+        except Exception as mem_err:
+            logger.warning("ConversationMemory write failed (non-fatal): %s", mem_err)
 
     return ChatResponse(
         answer=llm_resp.answer,

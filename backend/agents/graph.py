@@ -37,7 +37,12 @@ def _route_after_router(state: AgentState) -> str:
 
 
 def _route_after_action(state: AgentState) -> str:
-    """After retrieve/tool: go back to router for next step, or answer if done."""
+    """After retrieve/tool: go back to router for next step, or answer if done.
+    Phase 8: if approval_required was set by tool_node, exit graph immediately
+    so the runner can pause the task and create an Approval record.
+    """
+    if state.get("approval_required"):
+        return "end"  # mapped to END below
     if state["steps_used"] >= state["step_budget"]:
         return "answer"
     if state.get("error"):
@@ -91,14 +96,14 @@ def build_graph():
     builder.add_conditional_edges(
         "retrieve",
         _route_after_action,
-        {"router": "router", "answer": "answer"},
+        {"router": "router", "answer": "answer", "end": END},
     )
 
-    # tool → router | answer (conditional)
+    # tool → router | answer | end (conditional)
     builder.add_conditional_edges(
         "tool",
         _route_after_action,
-        {"router": "router", "answer": "answer"},
+        {"router": "router", "answer": "answer", "end": END},
     )
 
     # answer → END

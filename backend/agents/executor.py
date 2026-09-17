@@ -102,10 +102,37 @@ async def tool_node(state: AgentState) -> AgentState:
     plan = state["plan"]
     idx = state["current_step_index"]
 
-    # Phase 7 tool registry hook — import lazily so it's optional
+    # Phase 7 tool registry — check risk level before executing
     result: dict
     try:
-        from backend.tools.registry import execute_tool
+        from backend.tools.registry import execute_tool, TOOL_REGISTRY
+
+        # Phase 8: High-risk tools (risk_level >= 4) require human approval
+        tool_meta = TOOL_REGISTRY.get(tool_name, {})
+        risk_level = tool_meta.get("risk_level", 1)
+
+        if risk_level >= 4:
+            # Signal the runner to pause and await human approval
+            return {
+                **state,
+                "approval_required": True,
+                "approval_tool": tool_name,
+                "tool_input": tool_input,
+                "current_step_index": idx,  # do not advance — will re-run after approval
+                "steps_completed": [
+                    *state["steps_completed"],
+                    {
+                        "step_number": state["steps_used"] + 1,
+                        "node": "tool",
+                        "input": str(tool_input),
+                        "output": f"[AWAITING APPROVAL: {tool_name} requires human review]",
+                        "tool_name": tool_name,
+                        "tokens_used": 0,
+                        "cost_usd": 0.0,
+                    },
+                ],
+            }
+
         result = await execute_tool(
             tool_name=tool_name,
             params=tool_input,
@@ -113,11 +140,10 @@ async def tool_node(state: AgentState) -> AgentState:
             tenant_id=state["tenant_id"],
         )
     except ImportError:
-        # Tool registry not yet built — return a stub
         result = {
             "tool": tool_name,
             "status": "stub",
-            "data": f"[Tool '{tool_name}' called with {tool_input}. Phase 7 will wire real results.]",
+            "data": f"[Tool '{tool_name}' called with {tool_input}.]",
         }
     except Exception as e:
         result = {"tool": tool_name, "status": "error", "error": str(e)}
