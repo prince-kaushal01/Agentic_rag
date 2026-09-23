@@ -85,9 +85,8 @@ class CostTracker:
         today = cls._today()
 
         try:
-            import redis.asyncio as aioredis
-            from backend.memory.redis_store import _REDIS_URL
-            client = aioredis.from_url(_REDIS_URL, decode_responses=True)
+            from backend.memory.redis_store import RedisStore
+            client = await RedisStore.get_client()
 
             pipe = client.pipeline()
 
@@ -136,9 +135,8 @@ class CostTracker:
     @staticmethod
     async def _get_hash(key: str) -> dict:
         try:
-            import redis.asyncio as aioredis
-            from backend.memory.redis_store import _REDIS_URL
-            client = aioredis.from_url(_REDIS_URL, decode_responses=True)
+            from backend.memory.redis_store import RedisStore
+            client = await RedisStore.get_client()
             data = await client.hgetall(key)
             return {
                 "total_usd": float(data.get("total_usd", 0)),

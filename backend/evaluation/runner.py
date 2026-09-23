@@ -122,7 +122,6 @@ async def _run_retrieval_case(case: TestCase, top_k: int, tenant_id: uuid.UUID) 
 
     try:
         # Use manager-level permissions to ensure restricted docs are accessible
-        from backend.auth.permissions import UserPermissions
         perms = get_permissions("manager")
 
         async with AsyncSessionLocal() as session:

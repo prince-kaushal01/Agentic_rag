@@ -13,14 +13,11 @@ from google.genai import types
 from dotenv import load_dotenv
 
 from backend.retrieval.context_builder import BuiltContext
+from backend.observability.cost_tracker import calculate_cost
 
 load_dotenv()
 
 MODEL = os.getenv("LLM_MODEL", "gemini-2.5-flash")
-
-# Cost per 1M tokens (USD) — gemini-2.0-flash pricing
-_INPUT_COST_PER_M = 0.10
-_OUTPUT_COST_PER_M = 0.40
 
 SYSTEM_PROMPT = """\
 You are a knowledgeable assistant for NovaTech Solutions employees.
@@ -95,9 +92,7 @@ def answer_with_context(
     answer = response.text or ""
     input_tok = response.usage_metadata.prompt_token_count or 0
     output_tok = response.usage_metadata.candidates_token_count or 0
-    cost = (input_tok / 1_000_000 * _INPUT_COST_PER_M) + (
-        output_tok / 1_000_000 * _OUTPUT_COST_PER_M
-    )
+    cost = calculate_cost(input_tok, output_tok, MODEL)
 
     return LLMResponse(
         answer=answer,

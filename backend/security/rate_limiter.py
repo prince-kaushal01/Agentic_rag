@@ -21,6 +21,7 @@ _WINDOW_S = int(os.getenv("RATE_LIMIT_WINDOW_S", "60"))
 # Fallback in-process store: ip → deque of timestamps
 _store: dict[str, deque] = {}
 _lock = Lock()
+_redis_client = None  # module-level sync Redis client (lazy-initialised)
 
 
 class RateLimiter:
@@ -41,15 +42,23 @@ class RateLimiter:
         return RateLimiter._local_check(ip, max_requests, window_s)
 
     @staticmethod
+    def _get_redis_client():
+        """Return a module-level sync Redis client (created once, reused)."""
+        global _redis_client
+        if _redis_client is None:
+            import redis as _redis
+            from backend.memory.redis_store import _REDIS_URL, _REDIS_PASSWORD
+            url = _REDIS_URL
+            if _REDIS_PASSWORD and "@" not in url.split("://", 1)[-1]:
+                scheme, rest = url.split("://", 1)
+                url = f"{scheme}://:{_REDIS_PASSWORD}@{rest}"
+            _redis_client = _redis.from_url(url, decode_responses=True)
+        return _redis_client
+
+    @staticmethod
     def _redis_check(ip: str, max_requests: int, window_s: int) -> bool:
         """Redis sliding-window using sorted set (score = timestamp)."""
-        import redis as _redis
-        from backend.memory.redis_store import _REDIS_URL, _REDIS_PASSWORD
-
-        client = _redis.from_url(
-            _REDIS_URL if not _REDIS_PASSWORD else _REDIS_URL,
-            decode_responses=True,
-        )
+        client = RateLimiter._get_redis_client()
         key = f"rl:{ip}"
         now = time.time()
         window_start = now - window_s

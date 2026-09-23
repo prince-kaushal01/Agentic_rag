@@ -127,12 +127,25 @@ def _emit_span(span: Span) -> None:
             pass
 
 
+_sync_redis_client = None  # module-level sync client — created once, reused
+
+
+def _get_sync_redis():
+    global _sync_redis_client
+    if _sync_redis_client is None:
+        import redis as _redis
+        from backend.memory.redis_store import _REDIS_URL, _REDIS_PASSWORD
+        url = _REDIS_URL
+        if _REDIS_PASSWORD and "@" not in url.split("://", 1)[-1]:
+            scheme, rest = url.split("://", 1)
+            url = f"{scheme}://:{_REDIS_PASSWORD}@{rest}"
+        _sync_redis_client = _redis.from_url(url, decode_responses=True)
+    return _sync_redis_client
+
+
 def _emit_to_redis(span: Span) -> None:
     """Store span in Redis sorted set keyed by trace_id."""
-    import redis as _redis
-    from backend.memory.redis_store import _REDIS_URL
-
-    client = _redis.from_url(_REDIS_URL, decode_responses=True)
+    client = _get_sync_redis()
     key = f"trace:{span.trace_id}"
     client.zadd(key, {json.dumps(span.to_dict()): span.start_time_ms})
     client.expire(key, 3600)  # 1 hour TTL
@@ -191,9 +204,7 @@ async def trace_request(
 def get_trace(trace_id: str) -> list[dict]:
     """Retrieve all spans for a trace_id from Redis (for debugging)."""
     try:
-        import redis as _redis
-        from backend.memory.redis_store import _REDIS_URL
-        client = _redis.from_url(_REDIS_URL, decode_responses=True)
+        client = _get_sync_redis()
         raw = client.zrange(f"trace:{trace_id}", 0, -1)
         return [json.loads(r) for r in raw]
     except Exception:

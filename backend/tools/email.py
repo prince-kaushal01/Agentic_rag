@@ -5,9 +5,12 @@ No SMTP required.
 from __future__ import annotations
 
 import asyncio
+import logging
 import os
 import uuid
 from datetime import datetime, timezone
+
+logger = logging.getLogger(__name__)
 
 from google import genai
 from google.genai import types
@@ -102,10 +105,9 @@ async def send_email(
     sent_at = datetime.now(timezone.utc).isoformat()
 
     # Log the simulated send (in production, call your email provider here)
-    print(
-        f"[SIMULATED EMAIL SEND] "
-        f"id={message_id} to={to} cc={cc or 'none'} "
-        f"subject={subject!r} at={sent_at}"
+    logger.info(
+        "[SIMULATED EMAIL SEND] id=%s to=%s cc=%s subject=%r at=%s",
+        message_id, to, cc or "none", subject, sent_at,
     )
 
     return {
